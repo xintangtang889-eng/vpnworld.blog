@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import type { Airport } from '../data/airports';
+import { getBrandDetail } from '../data/brandDetails';
 
 interface Props {
   airport: Airport;
@@ -10,11 +11,12 @@ interface Props {
 }
 
 const { airport, prevAirport, nextAirport } = Astro.props;
+const detail = getBrandDetail(airport.slug || airport.id);
 
 const title = `${airport.name}怎么样？官方套餐价格/流量配置/节点线路与测速参数档案 | VPNWorld`;
 const description = `【官方参数档案】${airport.name}到底怎么样、如何选择？收录${airport.name}2026年最新官方套餐价格（${airport.startingPrice}元/月起）、月度流量（${airport.traffic}）、节点线路架构（${airport.lineType}）与测速参数信息，${airport.coupon ? '凭优惠码【' + airport.coupon + '】享折扣，' : ''}助您全方位核验官方真实资质。`;
 const keywords = `${airport.name}, ${airport.name}怎么样, ${airport.name}如何, ${airport.name}套餐价格, ${airport.name}流量, ${airport.name}节点, ${airport.name}官网, 机场推荐, vpn节点`;
-const h1 = `${airport.name}如何？官方套餐价格、流量规格、节点线路与测速档案`;
+const h1 = `${airport.name}官方参数档案：最新套餐价格、流量规格与线路拓扑`;
 
 const breadcrumbItems = [
   { name: '机场档案', href: '/ranking/overall/' },
@@ -28,15 +30,27 @@ const breadcrumbItems = [
 
     <div class="prose-custom bg-white p-6 sm:p-10 rounded-xl border border-slate-200 shadow-xs">
       <header class="border-b border-slate-100 pb-6 mb-6">
-        <div class="flex items-center gap-2 mb-2">
-          <span class="badge-brand">官方收录档案</span>
+        <div class="flex flex-wrap items-center gap-2 mb-2">
+          <span class="badge-brand">官方核验参数档案</span>
+          {airport.rank && (
+            <span class="text-xs bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded">
+              综合排名第 {airport.rank} 位
+            </span>
+          )}
           <span class="text-xs text-slate-400">·</span>
           <span class="text-xs text-slate-500">核验时间：{airport.lastVerified}</span>
         </div>
+
         <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight mb-3">
           {h1}
         </h1>
-        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed m-0">
+
+        <!-- Tagline Banner -->
+        <div class="bg-gradient-to-r from-blue-50/70 to-slate-50 border-l-4 border-blue-600 p-3.5 rounded-r-lg my-3 text-xs sm:text-sm text-slate-700 font-medium">
+          “{detail.tagline}”
+        </div>
+
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed m-0 mt-2">
           {airport.description}
         </p>
       </header>
@@ -54,7 +68,7 @@ const breadcrumbItems = [
         </div>
         <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
           <span class="text-xs text-slate-400 block mb-1">线路类别</span>
-          <span class="text-sm font-semibold text-blue-600">{airport.lineType}</span>
+          <span class="text-sm font-semibold text-blue-600 truncate block">{airport.lineType}</span>
         </div>
         <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
           <span class="text-xs text-slate-400 block mb-1">支持协议</span>
@@ -70,9 +84,32 @@ const breadcrumbItems = [
         </div>
       </div>
 
-      <!-- Plans -->
+      <!-- Technical Architecture Breakdown -->
       <section class="my-8">
-        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2 mb-3">官方套餐价格明细</h2>
+        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2 mb-3">物理网络拓扑与硬件技术规格</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+            <span class="text-slate-400 text-xs block mb-1">国内 BGP 入口</span>
+            <strong class="text-slate-900 block">{detail.architecture.entry}</strong>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+            <span class="text-slate-400 text-xs block mb-1">跨境传输专网</span>
+            <strong class="text-blue-600 block">{detail.architecture.transit}</strong>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+            <span class="text-slate-400 text-xs block mb-1">骨干带宽储备</span>
+            <strong class="text-slate-900 block">{detail.architecture.bandwidth}</strong>
+          </div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+            <span class="text-slate-400 text-xs block mb-1">出口 IP 属性</span>
+            <strong class="text-emerald-700 block">{detail.architecture.ipQuality}</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- Official Plans Table -->
+      <section class="my-8">
+        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2 mb-3">官方套餐价格与每GB成本明细</h2>
         <div class="overflow-x-auto border border-slate-200 rounded-lg">
           <table class="w-full text-left text-xs sm:text-sm">
             <thead class="bg-slate-50 text-slate-700 border-b border-slate-200">
@@ -97,10 +134,40 @@ const breadcrumbItems = [
         </div>
 
         {airport.coupon && (
-          <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 p-3 rounded-lg text-xs mt-3">
-            专属折扣优惠码：<code>{airport.coupon}</code>（结账时输入有效）
+          <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 p-3 rounded-lg text-xs mt-3 flex items-center justify-between">
+            <span>专属折扣优惠码：<code>{airport.coupon}</code>（结账时输入有效）</span>
+            <span class="bg-emerald-600 text-white px-2 py-0.5 rounded text-[10px] font-bold">立减生效</span>
           </div>
         )}
+      </section>
+
+      <!-- Latency Benchmark Snapshot Table -->
+      <section class="my-8">
+        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2 mb-3">晚高峰节点测速参数汇总</h2>
+        <div class="overflow-x-auto border border-slate-200 rounded-lg">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-slate-50 text-slate-700 border-b border-slate-200">
+              <tr>
+                <th class="p-2.5">测试区域</th>
+                <th class="p-2.5">Ping 延迟</th>
+                <th class="p-2.5">晚高峰下行</th>
+                <th class="p-2.5">丢包率</th>
+                <th class="p-2.5">4K 缓冲耗时</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              {detail.benchmarks.map(b => (
+                <tr>
+                  <td class="p-2.5 font-semibold text-slate-900">{b.region}</td>
+                  <td class="p-2.5 font-bold text-blue-600">{b.ping}</td>
+                  <td class="p-2.5 font-bold text-emerald-600">{b.download}</td>
+                  <td class="p-2.5 text-slate-600">{b.packetLoss}</td>
+                  <td class="p-2.5 text-amber-600">{b.videoBuffer}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <!-- Previous & Next Airport Parameter Archive Navigation Bar -->
@@ -169,8 +236,8 @@ const breadcrumbItems = [
       <!-- Action Footer -->
       <div class="pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center gap-2">
-          <a href={`/review/${airport.slug}/`} class="btn-brand-secondary text-xs">
-            查看该机场详细实测报告 →
+          <a href={`/review/${airport.slug}/`} class="btn-brand-primary text-xs">
+            👉 查看该机场深度实测评测报告 →
           </a>
           <a href="/compare/" class="btn-brand-secondary text-xs">
             横向参数对比
@@ -180,7 +247,7 @@ const breadcrumbItems = [
           href={airport.affiliateUrl || airport.officialUrl}
           target="_blank"
           rel="noopener noreferrer nofollow"
-          class="btn-brand-primary text-xs"
+          class="btn-brand-secondary text-xs"
         >
           前往 {airport.name} 官网 →
         </a>
