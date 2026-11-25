@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const title = '联系我们与纠错反馈 - VPNWorld 测评实验室 | VPNWorld';
+const description = '发现参数有误？需要申请评测或纠错？欢迎通过官方渠道联系 VPNWorld 测评团队。';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-custom py-6">
+    <Breadcrumb items={[{ name: '联系我们' }]} />
+
+    <article class="prose-custom bg-white p-6 sm:p-10 rounded-xl border border-slate-200 shadow-xs">
+      <header class="border-b border-slate-100 pb-4 mb-6">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">联系与纠错反馈</h1>
+        <p class="text-xs text-slate-500 m-0">欢迎广大用户对评测数据提出勘误与建议</p>
+      </header>
+
+      <div class="space-y-4 text-slate-700 text-sm leading-relaxed">
+        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2">数据勘误渠道</h2>
+        <p>
+          机场套餐资费与节点状态时常调整。如果您在浏览本站时发现任何价格变动、线路下线或优惠码失效，欢迎通过以下途径向我们反馈：
+        </p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>GitHub 仓库 Issues：</strong>提交公开勘误 Issue，我们将在 24 小时内更新统一数据源并重新部署。</li>
+          <li><strong>电子邮件联系：</strong><code>feedback@vpnworld.blog</code></li>
+        </ul>
+
+        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2 mt-6">商业合作与评测送测</h2>
+        <p>
+          本站接受优质服务商的客观评测申请。但请注意：我们坚守独立中立原则，任何付费推广均不会影响测试结论的真实性与客观评分。
+        </p>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

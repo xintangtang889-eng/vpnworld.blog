@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import AirportCard from '../../components/AirportCard.astro';
+import { AIRPORTS } from '../../data/airports';
+
+export function getStaticPaths() {
+  const categories = [
+    {
+      type: 'budget',
+      title: '2026 高性价比机场推荐 - 便宜好用的高性价比VPN节点梯子合集 | VPNWorld',
+      description: '2026年超高性价比平民机场推荐。精选月付8元以内、超低单GB价格、提供充沛月度流量的高性价比节点，包含飞V、微风网络、飞猫云等实测表现。',
+      keywords: '性价比机场, 便宜机场推荐, 10元内机场, 平价梯子, 机场推荐',
+      h1: '2026 高性价比与便宜机场节点推荐清单',
+      intro: '针对预算有限但对日常刷网页、看视频与查阅资料有刚性需求的用户，我们经过长期监控测试，筛选出兼具极致价格与稳定可用性的平价性价比梯子。',
+      filter: (a: any) => a.startingPrice <= 15 || a.advantages.some((adv: string) => adv.includes('性价比') || adv.includes('低')),
+    },
+    {
+      type: 'premium',
+      title: '高端专线机场推荐 - 原生IPLC/IEPL企业级高速VPN节点 | VPNWorld',
+      description: '2026高端企业级专线机场推荐。精选物理内网 IPLC / IEPL 专线直连、晚高峰零丢包、全绿低延迟节点，适合高要求外贸、大模型生产力与电竞联机。',
+      keywords: '高端专线机场, IPLC专线, IEPL专线, 晚高峰不卡, 梯子推荐',
+      h1: '高端企业级 IPLC/IEPL 专线机场推荐',
+      intro: '不经公网拥堵网关，采用物理光纤专线直连境内外机房。即使在晚高峰全国骨干网堵死或敏感时期，依然享有毫秒级极速响应与 99.9% 在线率。',
+      filter: (a: any) => a.lineType.includes('专线') || a.lineType.includes('IPLC') || a.lineType.includes('IEPL'),
+    },
+    {
+      type: 'beginner',
+      title: '新手入门机场推荐 - 一键连接、中文客服与零基础翻墙教程 | VPNWorld',
+      description: '适合新手小白的翻墙梯子与机场推荐。提供一键导入 Clash / 小火箭教程、全中文交互仪表盘与专业客服支持，告别繁琐网络配置。',
+      keywords: '新手翻墙梯子, 小白机场推荐, 一键导入节点, 简单好用梯子, 翻墙教程',
+      h1: '新手友好型翻墙梯子与机场推荐',
+      intro: '初次接触科学上网？面对各种协议名词感到眼花缭乱？本专题专门为新手量身筛选开箱即用、一键导入客户端且教程极其详尽的服务商。',
+      filter: (a: any) => a.suitableFor.some((s: string) => s.includes('新手') || s.includes('小白') || s.includes('多设备')),
+    },
+    {
+      type: 'stable',
+      title: '稳定防封机场推荐 - 晚高峰不卡顿的高可用VPN节点盘点 | VPNWorld',
+      description: '2026年最稳定的防封锁机场推荐。高 SLA 在线率保证、冗余 BGP 入口与多出口故障转移，全天候 24 小时稳定可用无感断联。',
+      keywords: '稳定防封机场, 节点不掉线, 高可用梯子, 机场推荐, 防封锁',
+      h1: '2026 稳定优先防封机场推荐',
+      intro: '稳定是科学上网的核心生命线。我们通过 7×24 小时自动化探针监控，筛选出面对网络波动具备快速自愈与充足备用冗余带宽的服务商。',
+      filter: (a: any) => (a.overallScore || 9.5) >= 9.2,
+    },
+    {
+      type: 'ai',
+      title: 'ChatGPT与AI专用机场推荐 - 原生纯净住宅IP不封号节点 | VPNWorld',
+      description: '专为 ChatGPT 4o、Claude 3.5 Sonnet 与 OpenAI API 开发者打造的专用机场推荐。超低欺诈分干净 IP，告别 1020 拒绝访问。',
+      keywords: 'ChatGPT机场, Claude防封号节点, OpenAI专线, 纯净住宅IP, AI梯子',
+      h1: 'ChatGPT / Claude / OpenAI 专用机场推荐',
+      intro: 'OpenAI 与 Anthropic 对机房 IP 的封锁日益严苛。本专题严选配备原生广播或商宽出口、IP 欺诈评分极低且每天自动轮换清洗的高可用专线。',
+      filter: (a: any) => a.aiSupport.length >= 3,
+    },
+    {
+      type: 'streaming',
+      title: '流媒体解锁机场推荐 - 4K秒开奈飞Netflix/Disney+/YouTube节点 | VPNWorld',
+      description: '2026流媒体解锁专用机场推荐。实测完整解锁 Netflix 非自制剧、Disney+、HBO Max 与 YouTube 4K/8K 满速无缓冲。',
+      keywords: '流媒体机场推荐, 奈飞4K节点, Disney+解锁, 4K秒开梯子, 视频加速',
+      h1: '4K 流媒体解锁专线机场推荐',
+      intro: '专为影视影音发烧友打造。节点具备大带宽冗余与流媒体专属 DNS 解锁通道，大屏幕 Apple TV 与手机端看剧秒开不降画质。',
+      filter: (a: any) => a.streamingSupport.length >= 3,
+    },
+  ];
+
+  return categories.map(cat => ({
+    params: { type: cat.type },
+    props: { cat },
+  }));
+}
+
+const { cat } = Astro.props;
+const matchedAirports = AIRPORTS.filter(cat.filter);
+
+const breadcrumbItems = [
+  { name: '机场推荐专题', href: '/recommend/budget/' },
+  { name: cat.h1 },
+];
+---
+
+<BaseLayout title={cat.title} description={cat.description} keywords={cat.keywords}>
+  <div class="container-custom py-6">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <section class="mb-8">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">{cat.h1}</h1>
+      <div class="alert-tip text-sm leading-relaxed mb-6">
+        <strong>专题导读：</strong>{cat.intro}
+      </div>
+
+      <!-- Quick Category Nav Tabs -->
+      <div class="flex flex-wrap gap-2 pb-4 border-b border-slate-200 text-xs">
+        <a href="/recommend/budget/" class={`px-3 py-1.5 rounded-full font-medium transition ${cat.type === 'budget' ? 'bg-blue-600 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}>性价比平价</a>
+        <a href="/recommend/premium/" class={`px-3 py-1.5 rounded-full font-medium transition ${cat.type === 'premium' ? 'bg-blue-600 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}>高端企业专线</a>
+        <a href="/recommend/beginner/" class={`px-3 py-1.5 rounded-full font-medium transition ${cat.type === 'beginner' ? 'bg-blue-600 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}>新手小白推荐</a>
+        <a href="/recommend/stable/" class={`px-3 py-1.5 rounded-full font-medium transition ${cat.type === 'stable' ? 'bg-blue-600 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}>稳定防封优先</a>
+        <a href="/recommend/ai/" class={`px-3 py-1.5 rounded-full font-medium transition ${cat.type === 'ai' ? 'bg-blue-600 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}>ChatGPT/AI 专用</a>
+        <a href="/recommend/streaming/" class={`px-3 py-1.5 rounded-full font-medium transition ${cat.type === 'streaming' ? 'bg-blue-600 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}>4K 流媒体解锁</a>
+      </div>
+    </section>
+
+    <!-- Airport Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {matchedAirports.map((airport, idx) => (
+        <AirportCard airport={airport} rank={idx + 1} featured={idx === 0} />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

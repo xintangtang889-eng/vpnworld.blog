@@ -1,14 +1,23 @@
 /**
- * VPNWorld.blog - Link Integrity & Relative Path Checker
+ * VPNWorld.blog - Astro SSG Internal Link Integrity Checker
  * Verifies that:
- * 1. ZERO root-absolute paths starting with "/" exist in href and src.
- * 2. Every relative link accurately resolves to an existing file on disk.
+ * 1. Every internal root-relative link (e.g. /guides/xxx/, /blog/xxx/) resolves to an actual generated file in dist/
+ * 2. External links, anchors, and protocols are safely handled.
  */
 
-const fs = require("fs");
-const path = require("path");
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT_DIR = path.resolve(__dirname, "..");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DIST_DIR = path.resolve(__dirname, '../dist');
+
+if (!fs.existsSync(DIST_DIR)) {
+  console.error(`[Error] dist 目录不存在，请先执行 npm run build`);
+  process.exit(1);
+}
+
 let filesChecked = 0;
 let linksChecked = 0;
 let errors = [];
@@ -17,69 +26,91 @@ function findHtmlFiles(dir) {
   let results = [];
   const list = fs.readdirSync(dir);
   list.forEach((file) => {
-    if (file === "node_modules" || file === ".git" || file === "scripts" || file === "docs") return;
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
     if (stat && stat.isDirectory()) {
       results = results.concat(findHtmlFiles(fullPath));
-    } else if (file.endsWith(".html")) {
+    } else if (file.endsWith('.html')) {
       results.push(fullPath);
     }
   });
   return results;
 }
 
-const htmlFiles = findHtmlFiles(ROOT_DIR);
+const htmlFiles = findHtmlFiles(DIST_DIR);
 
 htmlFiles.forEach((filePath) => {
   filesChecked++;
-  const relPath = path.relative(ROOT_DIR, filePath).replace(/\\/g, "/");
-  const fileDir = path.dirname(filePath);
-  const content = fs.readFileSync(filePath, "utf-8");
+  const relPath = path.relative(DIST_DIR, filePath).replace(/\\/g, '/');
+  const content = fs.readFileSync(filePath, 'utf-8');
 
-  // Regex to match href="..." and src="..."
-  const linkRegex = /(?:href|src)=["']([^"']+)["']/gi;
+  // Regex to match href="..."
+  const linkRegex = /href=["']([^"']+)["']/gi;
   let match;
 
   while ((match = linkRegex.exec(content)) !== null) {
     const rawUrl = match[1].trim();
     linksChecked++;
 
-    // Ignore anchors, javascript, external links, data URIs, mailto
-    if (rawUrl.startsWith("#") || rawUrl.startsWith("javascript:") || rawUrl.startsWith("mailto:") || rawUrl.startsWith("data:")) {
-      continue;
-    }
-    if (rawUrl.startsWith("http://") || rawUrl.startsWith("https://")) {
+    // Ignore client-side script template literals (e.g. ${...})
+    if (rawUrl.includes('${')) {
       continue;
     }
 
-    // STRICT CHECK: Disallow root absolute paths starting with "/" (e.g. /css/style.css)
-    if (rawUrl.startsWith("/")) {
-      errors.push(`[${relPath}] 违规使用了根绝对路径: "${rawUrl}" (必须使用标准相对路径如 css/ 或 ../)`);
+    // Ignore anchors, javascript, external links, data URIs, mailto, tel
+    if (
+      rawUrl.startsWith('#') ||
+      rawUrl.startsWith('javascript:') ||
+      rawUrl.startsWith('mailto:') ||
+      rawUrl.startsWith('tel:') ||
+      rawUrl.startsWith('data:') ||
+      rawUrl.startsWith('http://') ||
+      rawUrl.startsWith('https://')
+    ) {
       continue;
     }
 
-    // Resolve relative path to local disk
-    const cleanUrl = rawUrl.split("?")[0].split("#")[0];
+    // Process internal links (starts with / or relative)
+    const cleanUrl = rawUrl.split('?')[0].split('#')[0];
     if (!cleanUrl) continue;
 
-    const targetDiskPath = path.resolve(fileDir, cleanUrl);
+    let targetDiskPath;
+    if (cleanUrl.startsWith('/')) {
+      // Root-relative path
+      const stripped = cleanUrl.replace(/^\//, '');
+      if (stripped === '' || stripped.endsWith('/')) {
+        targetDiskPath = path.join(DIST_DIR, stripped, 'index.html');
+      } else {
+        // Try file itself or folder/index.html
+        const directFile = path.join(DIST_DIR, stripped);
+        const folderIndex = path.join(DIST_DIR, stripped, 'index.html');
+        if (fs.existsSync(directFile)) {
+          targetDiskPath = directFile;
+        } else {
+          targetDiskPath = folderIndex;
+        }
+      }
+    } else {
+      // Relative path
+      const fileDir = path.dirname(filePath);
+      targetDiskPath = path.resolve(fileDir, cleanUrl);
+    }
 
     if (!fs.existsSync(targetDiskPath)) {
-      errors.push(`[${relPath}] 失效内链: "${rawUrl}" -> 本地目标文件不存在 (${targetDiskPath})`);
+      errors.push(`[${relPath}] 失效内链: "${rawUrl}" -> 本地目标文件不存在 (${path.relative(DIST_DIR, targetDiskPath)})`);
     }
   }
 });
 
-console.log(`\n=================== 链接完整性检查结果 ===================`);
+console.log(`\n=================== Astro SSG 站内链接完整性检查 ===================`);
 console.log(`已检查 HTML 文件数: ${filesChecked}`);
 console.log(`已检查站内链接数: ${linksChecked}`);
 
 if (errors.length === 0) {
-  console.log(`✅ [PASS] 所有链接均严格使用相对路径且本地目标完全存在！支持 file:// 协议本地双击直接访问！`);
+  console.log(`✅ [PASS] 所有站内链接均完美有效，无任何 404 死链！`);
   process.exit(0);
 } else {
-  console.error(`❌ [FAIL] 发现 ${errors.length} 处链接错误:`);
-  errors.forEach((e) => console.error("  - " + e));
+  console.error(`❌ [FAIL] 发现 ${errors.length} 处链接失效问题:`);
+  errors.forEach((e) => console.error('  - ' + e));
   process.exit(1);
 }

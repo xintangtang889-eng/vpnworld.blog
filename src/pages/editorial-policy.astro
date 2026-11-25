@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const title = '编辑准则与联盟推广披露 - VPNWorld | VPNWorld';
+const description = 'VPNWorld 测评实验室独立编辑政策与联盟营销透明披露声明。恪守真实、中立、数据说话原则。';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-custom py-6">
+    <Breadcrumb items={[{ name: '编辑政策' }]} />
+
+    <article class="prose-custom bg-white p-6 sm:p-10 rounded-xl border border-slate-200 shadow-xs">
+      <header class="border-b border-slate-100 pb-4 mb-6">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">编辑准则与联盟推广披露</h1>
+        <p class="text-xs text-slate-500 m-0">公开、透明、负责任的内容创作与商业化披露</p>
+      </header>
+
+      <div class="space-y-4 text-slate-700 text-sm leading-relaxed">
+        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2">一、独立编辑准则</h2>
+        <p>
+          VPNWorld 的所有评测文章、排行榜单与教程均由编辑团队独立撰写与维护。我们的评价标准严格基于网络自动化探针实测数据（晚高峰丢包、延迟、带宽吞吐、流媒体解锁测试）。
+        </p>
+
+        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2 mt-6">二、联盟推广（Affiliate Disclosure）披露</h2>
+        <p>
+          为了维持服务器运行、海外多节点探针租金与自动化测试脚本的开销，本站部分外部购买链接采用了联盟推广链接（Affiliate Links）。这意味着当您通过本站链接前往机场官网并成功购买时，我们可能会获得微薄的佣金。但这<strong>绝不会增加您的购买成本</strong>，甚至常常能通过本站专属优惠码获得额外的折上优惠。
+        </p>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

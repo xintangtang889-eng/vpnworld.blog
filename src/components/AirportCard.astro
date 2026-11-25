@@ -1,0 +1,109 @@
+---
+import type { Airport } from '../data/airports';
+
+interface Props {
+  airport: Airport;
+  rank?: number;
+  featured?: boolean;
+}
+
+const { airport, rank, featured = false } = Astro.props;
+---
+
+<div class={`card-custom flex flex-col justify-between p-5 relative overflow-hidden ${featured ? 'ring-2 ring-blue-500' : ''}`}>
+  {featured && (
+    <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-3 py-0.5 rounded-bl-lg">
+      编辑力荐
+    </div>
+  )}
+
+  <div>
+    <!-- Header -->
+    <div class="flex items-start justify-between gap-2 mb-2">
+      <div>
+        <div class="flex items-center gap-2">
+          {rank && (
+            <span class={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-black ${
+              rank === 1 ? 'bg-amber-400 text-slate-900' :
+              rank === 2 ? 'bg-slate-300 text-slate-900' :
+              rank === 3 ? 'bg-amber-600 text-white' : 'bg-slate-100 text-slate-600'
+            }`}>
+              {rank}
+            </span>
+          )}
+          <h3 class="text-lg font-bold text-slate-900 hover:text-blue-600 transition">
+            <a href={`/review/${airport.slug}/`}>{airport.name}</a>
+          </h3>
+        </div>
+        <p class="text-xs text-blue-600 font-medium mt-1">{airport.lineType}</p>
+      </div>
+
+      <div class="text-right">
+        <div class="text-xs text-slate-400">综合评分</div>
+        <div class="text-base font-black text-amber-500">{airport.overallScore || 9.5} <span class="text-xs font-normal text-slate-400">/ 10</span></div>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <p class="text-xs text-slate-600 line-clamp-2 mb-4 leading-relaxed">
+      {airport.description}
+    </p>
+
+    <!-- Key Metrics Grid -->
+    <div class="grid grid-cols-2 gap-2 p-2.5 bg-slate-50 rounded-lg text-xs mb-4">
+      <div>
+        <span class="text-slate-400 block text-[11px]">起步价格</span>
+        <span class="font-bold text-red-600 text-sm">¥{airport.startingPrice}</span>
+        <span class="text-[10px] text-slate-500">/月起</span>
+      </div>
+      <div>
+        <span class="text-slate-400 block text-[11px]">标配流量</span>
+        <span class="font-bold text-slate-800">{airport.traffic}</span>
+      </div>
+      <div>
+        <span class="text-slate-400 block text-[11px]">传输协议</span>
+        <span class="text-slate-700 truncate block">{airport.protocols.join(', ')}</span>
+      </div>
+      <div>
+        <span class="text-slate-400 block text-[11px]">多设备支持</span>
+        <span class="text-slate-700 truncate block">{airport.deviceLimit}</span>
+      </div>
+    </div>
+
+    <!-- Coupon Badge if available -->
+    {airport.coupon && (
+      <div class="flex items-center justify-between text-xs bg-emerald-50 border border-emerald-200 text-emerald-800 px-2.5 py-1.5 rounded-md mb-4">
+        <span>优惠码：<code>{airport.coupon}</code></span>
+        <span class="text-[10px] bg-emerald-600 text-white px-1.5 py-0.2 rounded font-medium">折上立减</span>
+      </div>
+    )}
+
+    <!-- Highlights -->
+    <div class="space-y-1 mb-5">
+      {airport.advantages.slice(0, 2).map(adv => (
+        <div class="flex items-center gap-1.5 text-xs text-slate-600">
+          <svg class="w-3.5 h-3.5 text-emerald-500 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+          <span class="truncate">{adv}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Bottom CTA Actions -->
+  <div class="flex items-center gap-2 pt-3 border-t border-slate-100">
+    <a
+      href={airport.affiliateUrl || airport.officialUrl}
+      target="_blank"
+      rel="noopener noreferrer nofollow"
+      class="btn-brand-primary text-xs flex-1 text-center py-2 shadow-sm"
+    >
+      直达官网 →
+    </a>
+    <a
+      href={`/review/${airport.slug}/`}
+      class="btn-brand-secondary text-xs flex-1 text-center py-2"
+    >
+      评测报告
+    </a>
+  </div>
+</div>

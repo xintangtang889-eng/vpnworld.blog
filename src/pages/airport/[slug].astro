@@ -1,0 +1,15 @@
+---
+import { AIRPORTS } from '../../data/airports';
+import AirportLayout from '../../layouts/AirportLayout.astro';
+
+export function getStaticPaths() {
+  return AIRPORTS.map(airport => ({
+    params: { slug: airport.slug },
+    props: { airport },
+  }));
+}
+
+const { airport } = Astro.props;
+---
+
+<AirportLayout airport={airport} />

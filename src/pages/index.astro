@@ -1,0 +1,347 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AirportCard from '../components/AirportCard.astro';
+import { AIRPORTS } from '../data/airports';
+import { getCollection } from 'astro:content';
+
+const title = '机场推荐2026 - 稳定高性价比VPN机场节点与梯子推荐网 | VPNWorld';
+const description = '2026专业中文机场推荐与VPN梯子评测网。汇集14家实测真实机场节点，深度评测套餐价格、月付流量、IPLC/IEPL专线稳定性、晚高峰测速与ChatGPT/奈飞解锁，助您避坑选出最省钱顺畅的高性价比节点。';
+const keywords = '机场推荐, 机场节点, 性价比机场, 梯子推荐, vpn, vpn机场, vpn节点, vpn推荐';
+
+// Featured top 3
+const featuredAirports = [
+  AIRPORTS.find(a => a.id === 'yinxingren')!,
+  AIRPORTS.find(a => a.id === 'breezenet')!,
+  AIRPORTS.find(a => a.id === 'feimaoyun')!,
+];
+
+// Latest 6 blog posts
+const allPosts = await getCollection('blog');
+const recentPosts = allPosts.slice(0, 6);
+
+// Latest 4 guides
+const allGuides = await getCollection('guides');
+const featuredGuides = allGuides.slice(0, 4);
+---
+
+<BaseLayout title={title} description={description} keywords={keywords}>
+  <!-- Section 2: Hero -->
+  <section class="bg-gradient-to-b from-blue-50/60 to-white py-12 sm:py-16 border-b border-slate-200">
+    <div class="container-custom text-center max-w-4xl">
+      <div class="inline-flex items-center gap-1.5 bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+        <span>⚡ 2026 权威实测动态更新</span>
+        <span>·</span>
+        <span>拒绝虚标跑分与无良吹捧</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4">
+        2026 稳定机场推荐与 VPN 节点测评中心
+      </h1>
+
+      <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed mb-8">
+        全景深度收录 14 家真实可信服务商，提供实时核验的套餐价格、流量折算成本、晚高峰丢包压测、ChatGPT 与 4K 流媒体解锁能力，助您彻底避坑，挑选最称心如意的翻墙梯子。
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a href="/ranking/overall/" class="btn-brand-primary text-sm px-6 py-2.5 shadow-sm">
+          查看综合排行榜
+        </a>
+        <a href="/recommend/budget/" class="btn-brand-secondary text-sm px-5 py-2.5">
+          高性价比专区
+        </a>
+        <a href="/compare/" class="btn-brand-secondary text-sm px-5 py-2.5">
+          机场参数对比工具
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container-custom py-12 space-y-16">
+    <!-- Section 3: Quick Answer -->
+    <section class="bg-white border border-blue-100 rounded-2xl p-6 sm:p-8 shadow-xs">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded">快速结论</span>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 m-0">搜索用户选购速查结论</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs sm:text-sm">
+        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+          <div class="font-bold text-slate-900 mb-1">新手应该如何选择？</div>
+          <p class="text-slate-600 m-0 leading-relaxed">
+            首选支持月付、带有标准 Clash / 小火箭一键导入且提供详尽中文图文教程的品牌，切忌首次购买直接年付。
+          </p>
+        </div>
+        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+          <div class="font-bold text-slate-900 mb-1">哪些指标最核心？</div>
+          <p class="text-slate-600 m-0 leading-relaxed">
+            晚高峰（20:00-23:00）持续丢包率、物理专线类别（IPLC/IEPL 优于公网直连）、以及出口 IP 纯净度。
+          </p>
+        </div>
+        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+          <div class="font-bold text-slate-900 mb-1">如何判断是否划算？</div>
+          <p class="text-slate-600 m-0 leading-relaxed">
+            计算“月付价格 ÷ 实际可用流量”得出真实单GB价格，并务必查看节点倍率，谨防高倍率隐形扣费。
+          </p>
+        </div>
+        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+          <div class="font-bold text-slate-900 mb-1">购买前检查什么？</div>
+          <p class="text-slate-600 m-0 leading-relaxed">
+            检查在线设备数限制、退款规则支持度，并查阅独立第三方评测报告中关于流媒体和 AI 工具的实测结果。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Featured Airports -->
+    <section>
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <span class="badge-brand mb-1">精选力荐</span>
+          <h2 class="text-2xl font-bold text-slate-900 m-0">编辑部精选实测机场</h2>
+        </div>
+        <a href="/ranking/overall/" class="text-xs sm:text-sm text-blue-600 font-semibold hover:underline">
+          查看全部 14 家品牌 →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {featuredAirports.map((airport, idx) => (
+          <AirportCard airport={airport} rank={idx + 1} featured={idx === 0} />
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 5: Overall Ranking Preview -->
+    <section>
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <span class="badge-brand mb-1">梯子排行</span>
+          <h2 class="text-2xl font-bold text-slate-900 m-0">2026 综合实力排行榜速查</h2>
+        </div>
+        <a href="/ranking/overall/" class="text-xs sm:text-sm text-blue-600 font-semibold hover:underline">
+          查看完整榜单 →
+        </a>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-slate-50 border-b border-slate-200 text-slate-700">
+              <tr>
+                <th class="p-3.5 text-center w-12">排名</th>
+                <th class="p-3.5">品牌名称</th>
+                <th class="p-3.5">起步价格</th>
+                <th class="p-3.5">套餐流量</th>
+                <th class="p-3.5">线路类型</th>
+                <th class="p-3.5">适合人群</th>
+                <th class="p-3.5 text-center">综合评分</th>
+                <th class="p-3.5 text-right">操作</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              {AIRPORTS.slice(0, 8).map((airport, index) => (
+                <tr class="hover:bg-slate-50/60 transition">
+                  <td class="p-3.5 text-center font-black">
+                    <span class={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs ${
+                      index === 0 ? 'bg-amber-400 text-slate-900 font-bold' :
+                      index === 1 ? 'bg-slate-300 text-slate-900 font-bold' :
+                      index === 2 ? 'bg-amber-600 text-white font-bold' : 'text-slate-400'
+                    }`}>
+                      {index + 1}
+                    </span>
+                  </td>
+                  <td class="p-3.5 font-bold text-slate-900">
+                    <a href={`/review/${airport.slug}/`} class="hover:text-blue-600">
+                      {airport.name}
+                    </a>
+                  </td>
+                  <td class="p-3.5 font-bold text-red-600">¥{airport.startingPrice}</td>
+                  <td class="p-3.5 text-slate-700">{airport.traffic}</td>
+                  <td class="p-3.5 text-blue-600 font-medium text-xs">{airport.lineType}</td>
+                  <td class="p-3.5 text-slate-500 text-xs">{airport.suitableFor[0]}</td>
+                  <td class="p-3.5 text-center font-bold text-amber-500">{airport.overallScore || 9.5}</td>
+                  <td class="p-3.5 text-right">
+                    <a
+                      href={airport.affiliateUrl || airport.officialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      class="btn-brand-primary text-xs py-1 px-2.5"
+                    >
+                      直达官网
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Demand Clusters -->
+    <section>
+      <div class="mb-6">
+        <span class="badge-brand mb-1">场景精准匹配</span>
+        <h2 class="text-2xl font-bold text-slate-900 m-0">按您的核心使用需求选择</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="/recommend/budget/" class="card-custom p-5 block group">
+          <div class="text-2xl mb-2">💰</div>
+          <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition mb-1">低预算平民专区</h3>
+          <p class="text-xs text-slate-500 m-0">月付低至 ¥4.9 起，性价比极高，适合学生党与轻度办公。</p>
+        </a>
+        <a href="/recommend/premium/" class="card-custom p-5 block group">
+          <div class="text-2xl mb-2">🚀</div>
+          <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition mb-1">高端物理专线</h3>
+          <p class="text-xs text-slate-500 m-0">内网 IPLC/IEPL 直连，晚高峰零丢包，对网络有严苛要求的首选。</p>
+        </a>
+        <a href="/recommend/beginner/" class="card-custom p-5 block group">
+          <div class="text-2xl mb-2">🔰</div>
+          <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition mb-1">新手小白入门</h3>
+          <p class="text-xs text-slate-500 m-0">一键订阅导入，全中文客户端界面与保姆级配置图文引导。</p>
+        </a>
+        <a href="/recommend/stable/" class="card-custom p-5 block group">
+          <div class="text-2xl mb-2">🛡️</div>
+          <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition mb-1">稳定防封优先</h3>
+          <p class="text-xs text-slate-500 m-0">多线 BGP 冗余容灾，全天候 24 小时高可用性 SLA 保证。</p>
+        </a>
+        <a href="/recommend/ai/" class="card-custom p-5 block group">
+          <div class="text-2xl mb-2">🤖</div>
+          <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition mb-1">ChatGPT / AI 专用</h3>
+          <p class="text-xs text-slate-500 m-0">原生干净住宅出口，告别 Access Denied 1020 报错与频繁验证。</p>
+        </a>
+        <a href="/recommend/streaming/" class="card-custom p-5 block group">
+          <div class="text-2xl mb-2">🎬</div>
+          <h3 class="text-base font-bold text-slate-900 group-hover:text-blue-600 transition mb-1">4K 流媒体秒开</h3>
+          <p class="text-xs text-slate-500 m-0">全面解锁 Netflix 非自制剧、Disney+、YouTube 4K@60fps。</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Section 7: Compare Tool Banner -->
+    <section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-2xl p-8 shadow-md">
+      <div class="max-w-2xl">
+        <span class="bg-white/20 text-white text-xs font-bold px-2 py-0.5 rounded inline-block mb-3">实用小工具</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">还在纠结选哪家？试试横向对比工具</h2>
+        <p class="text-xs sm:text-sm text-blue-100 leading-relaxed mb-6">
+          自由勾选 2~4 家机场服务商，并排对比每GB真实单价、月付门槛、协议支持、设备并发上限与解锁能力。
+        </p>
+        <a href="/compare/" class="inline-flex items-center gap-2 bg-white text-blue-700 font-bold text-sm px-6 py-2.5 rounded-lg hover:bg-blue-50 transition shadow">
+          立即体验多维对比工具 →
+        </a>
+      </div>
+    </section>
+
+    <!-- Section 8: Latest In-depth Reviews -->
+    <section>
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <span class="badge-brand mb-1">深度评测</span>
+          <h2 class="text-2xl font-bold text-slate-900 m-0">14 家品牌独立评测报告</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3 text-center">
+        {AIRPORTS.map(a => (
+          <a href={`/review/${a.slug}/`} class="card-custom p-3 block hover:border-blue-400 group">
+            <span class="font-bold text-xs text-slate-900 group-hover:text-blue-600 block truncate">{a.name}</span>
+            <span class="text-[10px] text-red-500 block mt-0.5">¥{a.startingPrice}/月起</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 9: Guides Center -->
+    <section>
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <span class="badge-brand mb-1">教程中心</span>
+          <h2 class="text-2xl font-bold text-slate-900 m-0">全平台翻墙客户端实操教程 (共30篇)</h2>
+        </div>
+        <a href="/guides/" class="text-xs sm:text-sm text-blue-600 font-semibold hover:underline">
+          查看全部教程 →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {featuredGuides.map(guide => (
+          <a href={`/guides/${guide.slug}/`} class="card-custom p-4 block group">
+            <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-medium inline-block mb-2">
+              {guide.data.platform || '全平台教程'}
+            </span>
+            <h3 class="font-bold text-sm text-slate-900 group-hover:text-blue-600 line-clamp-2 leading-snug mb-2">
+              {guide.data.h1}
+            </h3>
+            <p class="text-xs text-slate-500 line-clamp-2 m-0 leading-relaxed">
+              {guide.data.description}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 10: Recent Blog Articles -->
+    <section>
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <span class="badge-brand mb-1">技术博客</span>
+          <h2 class="text-2xl font-bold text-slate-900 m-0">技术博文与选购决策指南 (共100篇)</h2>
+        </div>
+        <a href="/blog/" class="text-xs sm:text-sm text-blue-600 font-semibold hover:underline">
+          进入知识库 →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {recentPosts.map(post => (
+          <article class="card-custom p-5 flex flex-col justify-between">
+            <div>
+              <span class="badge-brand text-[10px] mb-2 inline-block">{post.data.category || '深度博文'}</span>
+              <h3 class="font-bold text-sm sm:text-base text-slate-900 hover:text-blue-600 line-clamp-2 mb-2 leading-snug">
+                <a href={`/blog/${post.slug}/`}>{post.data.h1}</a>
+              </h3>
+              <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed m-0">
+                {post.data.description}
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100">
+              <a href={`/blog/${post.slug}/`} class="text-xs font-semibold text-blue-600 hover:underline">
+                阅读文章 →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 11: Real FAQs -->
+    <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-xs">
+      <div class="mb-6">
+        <span class="badge-brand mb-1">常见问题</span>
+        <h2 class="text-2xl font-bold text-slate-900 m-0">围绕机场与 VPN 的核心 FAQ</h2>
+      </div>
+
+      <div class="space-y-4 text-xs sm:text-sm">
+        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+          <strong class="text-slate-900 font-bold block mb-1">为什么不建议直接购买年付套餐？</strong>
+          <p class="text-slate-600 m-0 leading-relaxed">
+            小型机场跑路周期通常为 3~6 个月。首次使用新品牌应坚持连续月付 2~3 个月，验证其晚高峰与敏感期的真实稳定性后再考虑更长周期。
+          </p>
+        </div>
+        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+          <strong class="text-slate-900 font-bold block mb-1">IPLC / IEPL 专线为什么比普通中转贵？</strong>
+          <p class="text-slate-600 m-0 leading-relaxed">
+            专线走物理内网光纤直连，不过公网防火墙，不存在晚高峰公网骨干网丢包拥堵问题，电信运营商硬性月租成本极高，但保障了 99.9% 稳定率。
+          </p>
+        </div>
+        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+          <strong class="text-slate-900 font-bold block mb-1">如何解决机场节点全部超时不可用？</strong>
+          <p class="text-slate-600 m-0 leading-relaxed">
+            90% 的超时原因为：电脑系统时间未与北京时间同步（时间差超过60秒握手失败）、订阅链接被墙需更新备用地址、或本地杀毒软件阻断。
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

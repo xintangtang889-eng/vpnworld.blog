@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const posts = await getCollection('blog');
+posts.sort((a, b) => a.slug.localeCompare(b.slug));
+
+const title = '机场与VPN节点深度技术博客 (共100篇精选) - 选购避坑 / 协议解密 / AI与流媒体全景 | VPNWorld';
+const description = '2026专业中文机场与VPN节点技术博客中心。收录 100 篇涵盖机场选购防跑路、IPLC/IEPL专线解析、ChatGPT/Claude解锁、Netflix奈飞跨区与联机游戏低延迟的深度干货文章。';
+const keywords = '机场推荐, 梯子推荐, 性价比机场, 机场节点, vpn推荐, 选购机场避坑, 流媒体解锁, 专线技术';
+
+const breadcrumbItems = [{ name: '博客文章知识库' }];
+---
+
+<BaseLayout title={title} description={description} keywords={keywords}>
+  <div class="container-custom py-6">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <section class="mb-8">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">机场与 VPN 节点技术博客与选购决策知识库</h1>
+      <p class="text-xs sm:text-sm text-slate-600 max-w-3xl leading-relaxed mb-6">
+        收录 100 篇原创技术干货与选购决策指南。从套餐资费暗坑、倍率猫腻、三网跨境路由适配，到 VLESS Reality 协议、AI 住宅 IP 纯净度与 Netflix 4K 原生解锁，全方位赋能您的网络决策。
+      </p>
+
+      <!-- Quick Topic Highlights -->
+      <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs flex flex-wrap items-center gap-2 text-xs">
+        <strong class="text-blue-600 mr-1">热门专题速达：</strong>
+        <a href="/blog/how-to-choose-airport/" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded">新手选购防坑</a>
+        <a href="/blog/monthly-vs-annual-plan/" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded">月付 vs 年付</a>
+        <a href="/blog/iplc-iepl-transit-explained/" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded">IPLC 专线解析</a>
+        <a href="/blog/chatgpt-plus-payment-and-ip-cleanliness/" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded">ChatGPT 纯净 IP</a>
+        <a href="/blog/netflix-region-library-and-ranking/" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded">奈飞全球片库</a>
+        <a href="/blog/steam-cross-region-purchase-ban-risk/" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded">Steam 跨区防封</a>
+        <a href="/blog/vless-xtls-reality-explained/" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded">Reality 协议科普</a>
+      </div>
+    </section>
+
+    <!-- 100 Articles Grid -->
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-bold text-slate-900 m-0">全部深度博文精选 (共 100 篇)</h2>
+      <span class="text-xs text-slate-400">已同步 2026 行业最新评测标准</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {posts.map((post, idx) => (
+        <article class="card-custom p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="badge-brand text-[10px]">{post.data.category || '深度评测'}</span>
+              <span class="text-[11px] text-slate-400">文章 #{idx + 1}</span>
+            </div>
+
+            <h3 class="text-base font-bold text-slate-900 line-clamp-2 mb-2 hover:text-blue-600 leading-snug">
+              <a href={`/blog/${post.slug}/`}>{post.data.h1}</a>
+            </h3>
+
+            <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed mb-4">
+              {post.data.description}
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100">
+            <a href={`/blog/${post.slug}/`} class="btn-brand-secondary text-xs w-full block text-center py-1.5">
+              阅读深度分析 →
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

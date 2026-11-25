@@ -1,0 +1,109 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import CtaBox from '../components/CtaBox.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    keywords?: string;
+    category?: string;
+    platform?: string;
+    date?: string;
+    readTime?: string;
+    h1: string;
+    intro?: string;
+    recommendedBrands?: string[];
+  };
+  type?: 'blog' | 'guides';
+}
+
+const { frontmatter, type = 'blog' } = Astro.props;
+
+const hubName = type === 'guides' ? '使用教程' : '博客文章';
+const hubHref = type === 'guides' ? '/guides/' : '/blog/';
+const tag = frontmatter.category || frontmatter.platform || '深度评测';
+
+const breadcrumbItems = [
+  { name: hubName, href: hubHref },
+  { name: frontmatter.h1 },
+];
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: frontmatter.h1,
+  description: frontmatter.description,
+  datePublished: frontmatter.date || '2026-03-01',
+  dateModified: frontmatter.date || '2026-03-01',
+  author: {
+    '@type': 'Organization',
+    name: 'VPNWorld 资深评测团队',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'VPNWorld',
+  },
+};
+---
+
+<BaseLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  keywords={frontmatter.keywords}
+  ogType="article"
+  schema={articleSchema}
+>
+  <div class="container-custom py-6">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <article class="prose-custom bg-white p-6 sm:p-10 rounded-xl border border-slate-200 shadow-xs">
+      <!-- Article Header -->
+      <header class="border-b border-slate-100 pb-6 mb-6">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="badge-brand">{tag}</span>
+          <span class="text-xs text-slate-400">·</span>
+          <span class="text-xs text-slate-500">更新时间：{frontmatter.date || '2026-03-01'}</span>
+          <span class="text-xs text-slate-400">·</span>
+          <span class="text-xs text-slate-500">预计阅读：{frontmatter.readTime || '8 分钟'}</span>
+        </div>
+
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+          {frontmatter.h1}
+        </h1>
+
+        <div class="text-xs text-slate-500 mt-3 flex items-center gap-2">
+          <span>撰稿：VPNWorld 资深技术测评组</span>
+          <span>·</span>
+          <span>已通过 2026 最新网络协议测试核验</span>
+        </div>
+      </header>
+
+      <!-- Intro Callout -->
+      {frontmatter.intro && (
+        <div class="alert-tip mb-8 text-sm leading-relaxed">
+          <strong class="font-bold">核心导读：</strong>{frontmatter.intro}
+        </div>
+      )}
+
+      <!-- Main Content Slot -->
+      <div class="prose prose-slate max-w-none text-slate-800 text-sm sm:text-base leading-relaxed space-y-4">
+        <slot />
+      </div>
+
+      <!-- Commercial CTA Box -->
+      <CtaBox brandIds={frontmatter.recommendedBrands} />
+
+      <!-- Footer Navigation inside Article -->
+      <div class="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+        <a href={hubHref} class="btn-brand-secondary text-xs">
+          ← 返回{hubName}中心
+        </a>
+        <a href="/ranking/overall/" class="btn-brand-primary text-xs">
+          查看2026综合实力排行榜 →
+        </a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

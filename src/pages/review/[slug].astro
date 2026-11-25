@@ -1,0 +1,15 @@
+---
+import { AIRPORTS } from '../../data/airports';
+import ReviewLayout from '../../layouts/ReviewLayout.astro';
+
+export function getStaticPaths() {
+  return AIRPORTS.map(airport => ({
+    params: { slug: airport.slug },
+    props: { airport },
+  }));
+}
+
+const { airport } = Astro.props;
+---
+
+<ReviewLayout airport={airport} />

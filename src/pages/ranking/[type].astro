@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import AirportCard from '../../components/AirportCard.astro';
+import { AIRPORTS } from '../../data/airports';
+
+export function getStaticPaths() {
+  const rankingTypes = [
+    {
+      type: 'overall',
+      title: '2026 综合机场排行榜 - 翻墙梯子与VPN节点多维度综合测评 | VPNWorld',
+      description: '2026年中文机场综合实力排名榜。基于晚高峰延迟、丢包率、网络架构、流媒体AI解锁能力及售后服务真实评分，每月动态核验。',
+      keywords: '机场排行榜, 机场综合排名, 梯子排行, 最佳机场节点, 2026机场推荐',
+      h1: '2026 年中文机场综合实力排行榜',
+      intro: '基于客观真实测试数据，综合网络稳定性、晚高峰速率、价格透明度、设备兼容性与流媒体解锁能力评定。拒绝虚假跑分，公开透明。',
+      sortFn: (a: any, b: any) => (b.overallScore || 9.5) - (a.overallScore || 9.5),
+    },
+    {
+      type: 'value',
+      title: '性价比机场排行榜 - 每GB单价与套餐流量实测对比榜单 | VPNWorld',
+      description: '最真实的性价比机场排行榜。依据“月付价格 ÷ 实际可用流量”科学核算真实每GB单价，排除高倍率水分，找出真正省钱划算的良心梯子。',
+      keywords: '性价比机场排行, 便宜机场, 每GB单价最低, 梯子性价比, 机场推荐',
+      h1: '真实性价比机场排行榜 (按每GB单价核算)',
+      intro: '不看虚标大流量，只看真实每GB到手单价。自动计算基础套餐有效流量成本，剔除高倍率陷阱，助您花最少的钱买到最实在的流量。',
+      sortFn: (a: any, b: any) => {
+        const costA = a.plans[0] ? a.plans[0].perGbCost : 1;
+        const costB = b.plans[0] ? b.plans[0].perGbCost : 1;
+        return costA - costB;
+      },
+    },
+    {
+      type: 'budget',
+      title: '低预算平民机场排行榜 - 10元内月付与平价VPN节点盘点 | VPNWorld',
+      description: '学生党与轻度用户福音！盘点起步月付在 10 元以内的低门槛优质机场，包含飞V、飞猫云、微风网络等真实平民神仙梯子。',
+      keywords: '低预算机场, 10元内机场, 平民梯子, 学生党翻墙, 便宜节点推荐',
+      h1: '低预算平价机场排行榜 (月付门槛优先)',
+      intro: '适合不愿承担长周期年付风险、仅需轻度查资料与日常追剧的用户。严格筛选起步月付在 10 元以内的平民良心品牌。',
+      sortFn: (a: any, b: any) => a.startingPrice - b.startingPrice,
+    },
+    {
+      type: 'stable',
+      title: '节点稳定性排行榜 - SLA在线率与晚高峰丢包率实测排行榜 | VPNWorld',
+      description: '7×24小时晚高峰压测稳定性排名！严选采用物理 IPLC / IEPL 专线架构、丢包率持续低于 0.2% 的高可用顶级服务商。',
+      keywords: '节点稳定性排行, 专线机场, 晚高峰不卡, 高可用梯子, 机场推荐',
+      h1: '节点稳定性与在线率排行榜 (专线优先)',
+      intro: '专线物理直连，零公网干扰。为对外贸商务、大模型 API 交互与外服联机有苛刻稳定性要求的团队提供可靠参考。',
+      sortFn: (a: any, b: any) => {
+        const isA = a.lineType.includes('专线') ? 1 : 0;
+        const isB = b.lineType.includes('专线') ? 1 : 0;
+        if (isA !== isB) return isB - isA;
+        return (b.overallScore || 9.5) - (a.overallScore || 9.5);
+      },
+    },
+  ];
+
+  return rankingTypes.map(r => ({
+    params: { type: r.type },
+    props: { r },
+  }));
+}
+
+const { r } = Astro.props;
+const sortedAirports = [...AIRPORTS].sort(r.sortFn);
+
+const breadcrumbItems = [
+  { name: '机场排行榜', href: '/ranking/overall/' },
+  { name: r.h1 },
+];
+---
+
+<BaseLayout title={r.title} description={r.description} keywords={r.keywords}>
+  <div class="container-custom py-6">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <section class="mb-8">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">{r.h1}</h1>
+      <div class="alert-tip text-sm leading-relaxed mb-6">
+        <strong>榜单说明：</strong>{r.intro}
+      </div>
+
+      <!-- Quick Ranking Nav Tabs -->
+      <div class="flex flex-wrap gap-2 pb-4 border-b border-slate-200 text-xs">
+        <a href="/ranking/overall/" class={`px-3 py-1.5 rounded-full font-medium transition ${r.type === 'overall' ? 'bg-blue-600 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}>综合实力榜</a>
+        <a href="/ranking/value/" class={`px-3 py-1.5 rounded-full font-medium transition ${r.type === 'value' ? 'bg-blue-600 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}>真实性价比榜 (每GB单价)</a>
+        <a href="/ranking/budget/" class={`px-3 py-1.5 rounded-full font-medium transition ${r.type === 'budget' ? 'bg-blue-600 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}>低预算平价榜</a>
+        <a href="/ranking/stable/" class={`px-3 py-1.5 rounded-full font-medium transition ${r.type === 'stable' ? 'bg-blue-600 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700'}`}>稳定性与专线榜</a>
+      </div>
+    </section>
+
+    <!-- Rankings Comparison Table View -->
+    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs mb-10">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="bg-slate-50 border-b border-slate-200 text-slate-700">
+            <tr>
+              <th class="p-3.5 text-center w-12">排名</th>
+              <th class="p-3.5">品牌名称</th>
+              <th class="p-3.5">起步月付</th>
+              <th class="p-3.5">标配流量</th>
+              <th class="p-3.5">线路类型</th>
+              <th class="p-3.5">单GB均价</th>
+              <th class="p-3.5 text-center">综合评分</th>
+              <th class="p-3.5 text-right">操作</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            {sortedAirports.map((airport, index) => {
+              const perGb = airport.plans[0] ? airport.plans[0].perGbCost.toFixed(3) : '核验中';
+              return (
+                <tr class="hover:bg-slate-50/60 transition">
+                  <td class="p-3.5 text-center font-black">
+                    <span class={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs ${
+                      index === 0 ? 'bg-amber-400 text-slate-900 font-bold' :
+                      index === 1 ? 'bg-slate-300 text-slate-900 font-bold' :
+                      index === 2 ? 'bg-amber-600 text-white font-bold' : 'text-slate-400'
+                    }`}>
+                      {index + 1}
+                    </span>
+                  </td>
+                  <td class="p-3.5">
+                    <a href={`/review/${airport.slug}/`} class="font-bold text-slate-900 hover:text-blue-600">
+                      {airport.name}
+                    </a>
+                  </td>
+                  <td class="p-3.5 font-bold text-red-600">¥{airport.startingPrice}</td>
+                  <td class="p-3.5 text-slate-700">{airport.traffic}</td>
+                  <td class="p-3.5 text-blue-600 font-medium text-xs">{airport.lineType}</td>
+                  <td class="p-3.5 text-emerald-600 font-medium">¥{perGb}/GB</td>
+                  <td class="p-3.5 text-center font-bold text-amber-500">{airport.overallScore || 9.5}</td>
+                  <td class="p-3.5 text-right space-x-1">
+                    <a
+                      href={airport.affiliateUrl || airport.officialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      class="btn-brand-primary text-xs py-1 px-2.5"
+                    >
+                      直达官网
+                    </a>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <h2 class="text-xl font-bold text-slate-900 mb-4">详细卡片列表</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {sortedAirports.map((airport, idx) => (
+        <AirportCard airport={airport} rank={idx + 1} featured={idx < 3} />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

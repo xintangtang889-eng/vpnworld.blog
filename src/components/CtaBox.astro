@@ -1,0 +1,76 @@
+---
+import { AIRPORTS } from '../data/airports';
+
+interface Props {
+  brandIds?: string[];
+  title?: string;
+  description?: string;
+}
+
+const {
+  brandIds = ['yinxingren', 'breezenet', 'feimaoyun'],
+  title = '🎯 推荐高适配专线机场节点（已核验实测）',
+  description = '针对本文/教程场景，我们严选了以下具备高稳定性、独立流媒体解锁与抗封锁专线的服务商：'
+} = Astro.props;
+
+const selectedAirports = brandIds
+  .map(id => AIRPORTS.find(a => a.id === id || a.slug === id))
+  .filter(Boolean);
+---
+
+<div class="my-10 p-6 bg-slate-50 border-2 border-blue-100 rounded-xl shadow-sm">
+  <div class="mb-5">
+    <h3 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2 m-0">
+      <span>{title}</span>
+    </h3>
+    <p class="text-xs sm:text-sm text-slate-500 mt-1 m-0">
+      {description}
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+    {selectedAirports.map(airport => (
+      <div class="bg-white p-4 rounded-lg border border-slate-200 flex flex-col justify-between shadow-xs">
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <strong class="text-slate-900 font-bold text-sm">{airport!.name}</strong>
+            <span class="text-[10px] bg-blue-50 text-blue-600 font-semibold px-1.5 py-0.5 rounded">
+              {airport!.lineType}
+            </span>
+          </div>
+
+          <p class="text-xs text-slate-500 line-clamp-2 mb-2 leading-relaxed">
+            {airport!.description}
+          </p>
+
+          <div class="text-red-600 font-bold text-base mb-1">
+            ¥{airport!.startingPrice} <span class="text-xs font-normal text-slate-400">/月起 ({airport!.traffic})</span>
+          </div>
+
+          {airport!.coupon && (
+            <div class="text-[11px] text-blue-600 bg-blue-50/60 px-2 py-0.5 rounded mb-3 inline-block">
+              券码：<code>{airport!.coupon}</code>
+            </div>
+          )}
+        </div>
+
+        <div class="flex items-center gap-2 mt-2 pt-2 border-t border-slate-100">
+          <a
+            href={airport!.affiliateUrl || airport!.officialUrl}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="btn-brand-primary text-xs flex-1 text-center py-1.5"
+          >
+            直达官网 →
+          </a>
+          <a
+            href={`/review/${airport!.slug}/`}
+            class="btn-brand-secondary text-xs flex-1 text-center py-1.5"
+          >
+            评测
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

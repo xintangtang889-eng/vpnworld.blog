@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const title = '隐私权保护政策 - VPNWorld | VPNWorld';
+const description = 'VPNWorld 隐私政策。我们不记录用户个人身份信息，不植入第三方广告追踪，保障完全纯净的浏览环境。';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-custom py-6">
+    <Breadcrumb items={[{ name: '隐私政策' }]} />
+
+    <article class="prose-custom bg-white p-6 sm:p-10 rounded-xl border border-slate-200 shadow-xs">
+      <header class="border-b border-slate-100 pb-4 mb-6">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">隐私权保护政策</h1>
+        <p class="text-xs text-slate-500 m-0">我们如何尊重并保护您的数字隐私</p>
+      </header>
+
+      <div class="space-y-4 text-slate-700 text-sm leading-relaxed">
+        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2">数据收集与使用</h2>
+        <p>
+          VPNWorld 坚信最小化数据收集原则。本站为纯静态托管，不强制要求注册登录，不收集访客的真实姓名、手机号、支付信息或敏感身份信息。
+        </p>
+        <p>
+          网站托管于 Cloudflare Pages 全球 CDN，仅保留标准的匿名访问日志（如脱敏 IP、访问 URL 与 User-Agent），用于网络防攻击（DDoS 防护）与基础分析。
+        </p>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

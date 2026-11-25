@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const title = '关于我们 - VPNWorld 测评实验室团队介绍 | VPNWorld';
+const description = '了解 VPNWorld 测评实验室的创办初衷、团队构成与测试准则。建立真实、客观、可验证的中文网络节点与翻墙工具测评中心。';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-custom py-6">
+    <Breadcrumb items={[{ name: '关于我们' }]} />
+
+    <article class="prose-custom bg-white p-6 sm:p-10 rounded-xl border border-slate-200 shadow-xs">
+      <header class="border-b border-slate-100 pb-4 mb-6">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">关于 VPNWorld 测评实验室</h1>
+        <p class="text-xs text-slate-500 m-0">客观、真实、可验证的中文网络节点与翻墙工具测评中心</p>
+      </header>
+
+      <div class="space-y-4 text-slate-700 text-sm leading-relaxed">
+        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2">我们的创办初衷</h2>
+        <p>
+          在中文互联网中，翻墙与科学上网领域常年充斥着虚假包装、营销黑产与恶意跑路。许多用户因缺乏基础网络知识，不仅损失了金钱，还面临账号风控甚至个人隐私泄露的巨大风险。
+        </p>
+        <p>
+          <strong>VPNWorld（vpnworld.blog）</strong> 成立于2026年，由一群长期关注分布式网络协议、跨境通信与网络安全的极客创立。我们的唯一使命是：<strong>建立一个数据真实、评价标准公开、拒绝虚假跑分的专业中文网络测评与知识中心。</strong>
+        </p>
+
+        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2 mt-6">核心运作准则</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>零伪造数据：</strong>所有列出的节点参数、价格信息与线路类型均来自官方公示或自建自动化监控实测。若未经验证，一律标注“尚未核实”。</li>
+          <li><strong>评分规则全透明：</strong>综合排行榜、性价比排行与稳定性排行的权重分配全部公开公示，不暗箱操作。</li>
+          <li><strong>现代高性能静态架构：</strong>本站采用 Astro 最新稳定架构构建，全量纯静态预渲染，秒开加载，不依赖任何第三方侵入式跟踪脚本，最大程度尊重并保护访客隐私。</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

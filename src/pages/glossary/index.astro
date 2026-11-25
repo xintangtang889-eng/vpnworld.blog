@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+const terms = await getCollection('glossary');
+const title = '术语百科 - 常见代理协议与网络技术名词通俗科普 | VPNWorld';
+const description = '科普网络代理、IPLC专线、节点倍率、分流规则与测速指标等核心技术术语。';
+
+const breadcrumbItems = [{ name: '术语百科' }];
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-custom py-6">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <section class="mb-8">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">网络代理与梯子技术术语知识库</h1>
+      <p class="text-xs sm:text-sm text-slate-600 m-0">通俗易懂拆解核心技术原理，助您避开营销话术陷阱。</p>
+    </section>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {terms.map(t => (
+        <a href={`/glossary/${t.slug}/`} class="card-custom p-5 block group">
+          <span class="badge-brand text-[10px] mb-2 inline-block">核心术语</span>
+          <h2 class="text-base font-bold text-slate-900 group-hover:text-blue-600 leading-snug mb-2">
+            {t.data.h1}
+          </h2>
+          <p class="text-xs text-slate-500 line-clamp-2 m-0 leading-relaxed">
+            {t.data.description}
+          </p>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

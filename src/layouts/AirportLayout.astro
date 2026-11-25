@@ -1,0 +1,120 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import type { Airport } from '../data/airports';
+
+interface Props {
+  airport: Airport;
+}
+
+const { airport } = Astro.props;
+
+const title = `${airport.name}怎么样？官方套餐价格/流量配置/节点线路与测速参数档案 | VPNWorld`;
+const description = `【官方参数档案】${airport.name}到底怎么样、如何选择？收录${airport.name}2026年最新官方套餐价格（${airport.startingPrice}元/月起）、月度流量（${airport.traffic}）、节点线路架构（${airport.lineType}）与测速参数信息，${airport.coupon ? '凭优惠码【' + airport.coupon + '】享折扣，' : ''}助您全方位核验官方真实资质。`;
+const keywords = `${airport.name}, ${airport.name}怎么样, ${airport.name}如何, ${airport.name}套餐价格, ${airport.name}流量, ${airport.name}节点, ${airport.name}官网, 机场推荐, vpn节点`;
+const h1 = `${airport.name}如何？官方套餐价格、流量规格、节点线路与测速档案`;
+
+const breadcrumbItems = [
+  { name: '机场档案', href: '/ranking/overall/' },
+  { name: `${airport.name} 官方档案` },
+];
+---
+
+<BaseLayout title={title} description={description} keywords={keywords}>
+  <div class="container-custom py-6">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <div class="prose-custom bg-white p-6 sm:p-10 rounded-xl border border-slate-200 shadow-xs">
+      <header class="border-b border-slate-100 pb-6 mb-6">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="badge-brand">官方收录档案</span>
+          <span class="text-xs text-slate-400">·</span>
+          <span class="text-xs text-slate-500">核验时间：{airport.lastVerified}</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight mb-3">
+          {h1}
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed m-0">
+          {airport.description}
+        </p>
+      </header>
+
+      <!-- Parameter Spec Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 my-6">
+        <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+          <span class="text-xs text-slate-400 block mb-1">起步门槛</span>
+          <span class="text-lg font-bold text-red-600">¥{airport.startingPrice}</span>
+          <span class="text-xs text-slate-500">/月起</span>
+        </div>
+        <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+          <span class="text-xs text-slate-400 block mb-1">标配流量</span>
+          <span class="text-base font-bold text-slate-800">{airport.traffic}</span>
+        </div>
+        <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+          <span class="text-xs text-slate-400 block mb-1">线路类别</span>
+          <span class="text-sm font-semibold text-blue-600">{airport.lineType}</span>
+        </div>
+        <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+          <span class="text-xs text-slate-400 block mb-1">支持协议</span>
+          <span class="text-xs font-medium text-slate-700">{airport.protocols.join(', ')}</span>
+        </div>
+        <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+          <span class="text-xs text-slate-400 block mb-1">节点覆盖</span>
+          <span class="text-xs font-medium text-slate-700">{airport.regions.join('、')}</span>
+        </div>
+        <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+          <span class="text-xs text-slate-400 block mb-1">设备上限</span>
+          <span class="text-xs font-medium text-slate-700">{airport.deviceLimit}</span>
+        </div>
+      </div>
+
+      <!-- Plans -->
+      <section class="my-8">
+        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2 mb-3">官方套餐价格明细</h2>
+        <div class="overflow-x-auto border border-slate-200 rounded-lg">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead class="bg-slate-50 text-slate-700 border-b border-slate-200">
+              <tr>
+                <th class="p-3">套餐名称</th>
+                <th class="p-3">价格</th>
+                <th class="p-3">可用流量</th>
+                <th class="p-3">折算每GB单价</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              {airport.plans.map(p => (
+                <tr>
+                  <td class="p-3 font-semibold text-slate-900">{p.name}</td>
+                  <td class="p-3 font-bold text-red-600">¥{p.price}</td>
+                  <td class="p-3 text-slate-700">{p.traffic} GB</td>
+                  <td class="p-3 text-emerald-600 font-semibold">¥{p.perGbCost.toFixed(3)} / GB</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {airport.coupon && (
+          <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 p-3 rounded-lg text-xs mt-3">
+            专属折扣优惠码：<code>{airport.coupon}</code>（结账时输入有效）
+          </div>
+        )}
+      </section>
+
+      <!-- Action Footer -->
+      <div class="pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+        <a href={`/review/${airport.slug}/`} class="btn-brand-secondary text-xs">
+          查看该机场详细实测报告 →
+        </a>
+        <a
+          href={airport.affiliateUrl || airport.officialUrl}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          class="btn-brand-primary text-xs"
+        >
+          前往 {airport.name} 官网 →
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,12 +1,21 @@
 /**
- * VPNWorld.blog - SEO Audit Script
- * Validates Title, Description, H1, Canonical, Robots, and Metadata
+ * VPNWorld.blog - Astro SEO Audit Script
+ * Validates Title, Description, H1, Canonical, Robots, and Metadata across static build in dist/
  */
 
-const fs = require("fs");
-const path = require("path");
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT_DIR = path.resolve(__dirname, "..");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DIST_DIR = path.resolve(__dirname, '../dist');
+
+if (!fs.existsSync(DIST_DIR)) {
+  console.error(`[Error] dist 目录不存在，请先执行 npm run build`);
+  process.exit(1);
+}
+
 let totalChecked = 0;
 let errors = [];
 let titlesMap = new Map();
@@ -15,24 +24,23 @@ function findHtmlFiles(dir) {
   let results = [];
   const list = fs.readdirSync(dir);
   list.forEach((file) => {
-    if (file === "node_modules" || file === ".git" || file === "scripts" || file === "docs") return;
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
     if (stat && stat.isDirectory()) {
       results = results.concat(findHtmlFiles(fullPath));
-    } else if (file.endsWith(".html")) {
+    } else if (file.endsWith('.html')) {
       results.push(fullPath);
     }
   });
   return results;
 }
 
-const htmlFiles = findHtmlFiles(ROOT_DIR);
+const htmlFiles = findHtmlFiles(DIST_DIR);
 
 htmlFiles.forEach((filePath) => {
   totalChecked++;
-  const relPath = path.relative(ROOT_DIR, filePath).replace(/\\/g, "/");
-  const content = fs.readFileSync(filePath, "utf-8");
+  const relPath = path.relative(DIST_DIR, filePath).replace(/\\/g, '/');
+  const content = fs.readFileSync(filePath, 'utf-8');
 
   // 1. Check Title
   const titleMatch = content.match(/<title>([^<]+)<\/title>/i);
@@ -48,45 +56,50 @@ htmlFiles.forEach((filePath) => {
   }
 
   // 2. Check Meta Description (404 is optional)
-  if (relPath !== "404.html") {
+  if (!relPath.includes('404')) {
     const descMatch = content.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i);
     if (!descMatch || !descMatch[1].trim()) {
-      errors.push(`[${relPath}] 缺少 meta description 标签`);
+      errors.push(`[${relPath}] 缺少或未填写 <meta name="description">`);
     }
   }
 
-  // 3. Check H1 tag
-  const h1Matches = content.match(/<h1[^>]*>([\s\S]*?)<\/h1>/gi);
-  if (!h1Matches || h1Matches.length === 0) {
-    errors.push(`[${relPath}] 缺少 <h1> 标签`);
-  } else if (h1Matches.length > 1) {
-    errors.push(`[${relPath}] 存在多个 <h1> 标签 (当前数量: ${h1Matches.length})`);
+  // 3. Check H1
+  const h1Match = content.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  if (!h1Match || !h1Match[1].trim()) {
+    errors.push(`[${relPath}] 页面缺失 <h1> 标签`);
+  } else {
+    const allH1s = content.match(/<h1[^>]*>/gi);
+    if (allH1s && allH1s.length > 1) {
+      errors.push(`[${relPath}] 存在多个 <h1> 标签 (${allH1s.length} 个)`);
+    }
   }
 
-  // 4. Check Canonical (404 should have noindex instead of canonical)
-  if (relPath !== "404.html") {
-    const canonicalMatch = content.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i);
-    if (!canonicalMatch) {
-      errors.push(`[${relPath}] 缺少 canonical 标签`);
-    } else {
-      const canonicalUrl = canonicalMatch[1];
-      if (!canonicalUrl.startsWith("https://vpnworld.blog")) {
-        errors.push(`[${relPath}] Canonical 域名错误，必须以 https://vpnworld.blog 开头: "${canonicalUrl}"`);
-      }
-      if (canonicalUrl.includes("localhost") || canonicalUrl.includes("127.0.0.1")) {
-        errors.push(`[${relPath}] Canonical 包含测试域名: "${canonicalUrl}"`);
-      }
+  // 4. Check Canonical
+  const canonicalMatch = content.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i);
+  if (!canonicalMatch) {
+    errors.push(`[${relPath}] 缺失 canonical 标签`);
+  } else {
+    const href = canonicalMatch[1];
+    if (!href.startsWith('https://vpnworld.blog')) {
+      errors.push(`[${relPath}] canonical URL 非正式域名: ${href}`);
     }
+  }
+
+  // 5. Check Robots Meta
+  const robotsMatch = content.match(/<meta\s+name=["']robots["']\s+content=["']([^"']+)["']/i);
+  if (!robotsMatch && !relPath.includes('404')) {
+    errors.push(`[${relPath}] 缺失 robots meta 标签`);
   }
 });
 
-console.log(`\n=================== SEO AUDIT 结果 ===================`);
-console.log(`已审计 HTML 页面总数: ${totalChecked}`);
+console.log(`\n=================== Astro SSG SEO 审计结果 ===================`);
+console.log(`已审计 HTML 文件数: ${totalChecked}`);
+
 if (errors.length === 0) {
-  console.log(`✅ [PASS] 所有页面的 Title、Description、H1、Canonical 与 Metadata 均完全合规！`);
+  console.log(`✅ [PASS] 100% 页面通过 SEO 审计：Title/Description/H1/Canonical/Robots 齐全且全站零重复 Title！`);
   process.exit(0);
 } else {
-  console.error(`❌ [FAIL] 发现 ${errors.length} 处 SEO 格式错误:`);
-  errors.forEach((e) => console.error("  - " + e));
+  console.error(`❌ [FAIL] 发现 ${errors.length} 项 SEO 规范问题:`);
+  errors.forEach((e) => console.error('  - ' + e));
   process.exit(1);
 }

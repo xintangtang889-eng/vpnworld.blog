@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const title = '法律免责声明 - VPNWorld | VPNWorld';
+const description = 'VPNWorld 法律免责声明。本站内容仅用于计算机网络技术、分布式通信协议与网络安全学术研究。';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-custom py-6">
+    <Breadcrumb items={[{ name: '法律免责声明' }]} />
+
+    <article class="prose-custom bg-white p-6 sm:p-10 rounded-xl border border-slate-200 shadow-xs">
+      <header class="border-b border-slate-100 pb-4 mb-6">
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">法律免责声明</h1>
+        <p class="text-xs text-slate-500 m-0">学术研究与合规使用声明</p>
+      </header>
+
+      <div class="space-y-4 text-slate-700 text-sm leading-relaxed">
+        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2">使用边界与法律自律</h2>
+        <p>
+          本站（vpnworld.blog）发布的所有评测报告、协议技术文章与客户端教程，仅供计算机网络协议研究、前沿技术探索与网络安全学术交流参考。
+        </p>
+        <p>
+          任何使用者必须严格遵守所在国家或地区的互联网法律法规。严禁利用任何代理技术从事任何危害国家安全、侵犯他人隐私或违反法律法规的违法犯罪活动。因使用者个人行为引发的任何法律后果，由使用者自行承担，本站概不负责。
+        </p>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { AIRPORTS } from '../data/airports';
+
+const title = '机场横向对比工具 - 2~4家VPN机场节点参数/价格/协议在线对比 | VPNWorld';
+const description = '2026专业机场横向参数对比工具。支持在线自由选择 2~4 家机场服务商，从月付价格、流量规格、每GB成本、专线架构、流媒体与ChatGPT解锁进行全维度对比。';
+const keywords = '机场对比, 机场横向对比, 梯子对比工具, 翻墙节点对比, 性价比对比';
+
+const breadcrumbItems = [
+  { name: '机场对比工具' }
+];
+---
+
+<BaseLayout title={title} description={description} keywords={keywords}>
+  <div class="container-custom py-6">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <section class="mb-8">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">机场多维在线横向对比工具</h1>
+      <p class="text-xs sm:text-sm text-slate-600 m-0">
+        最多可同时选择 2~4 家机场品牌，全方位对比月付资费、标配流量、单GB成本、线路架构、解锁能力与专属优惠码。
+      </p>
+    </section>
+
+    <!-- Selector Bar -->
+    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs mb-8 flex flex-wrap items-center gap-3">
+      <span class="text-xs font-bold text-slate-700">添加对比候选：</span>
+      <select id="compare-select" class="text-xs bg-slate-50 border border-slate-300 rounded px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500">
+        <option value="">-- 选择要添加对比的品牌 --</option>
+        {AIRPORTS.map(a => (
+          <option value={a.id}>{a.name} ({a.startingPrice}元/月起 · {a.lineType})</option>
+        ))}
+      </select>
+      <span class="text-[11px] text-slate-400">已默认预选 3 家代表性机场</span>
+    </div>
+
+    <!-- Comparison Table Container -->
+    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+      <div class="overflow-x-auto" id="compare-table-container">
+        <!-- Rendered by client script -->
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script define:vars={{ airportsData: AIRPORTS }}>
+  let selectedIds = ["yinxingren", "breezenet", "feimaoyun"];
+
+  function renderTable() {
+    const container = document.getElementById('compare-table-container');
+    if (!container) return;
+
+    const selected = selectedIds.map(id => airportsData.find(a => a.id === id)).filter(Boolean);
+
+    if (selected.length === 0) {
+      container.innerHTML = '<div class="p-8 text-center text-slate-400 text-sm">请从上方下拉框选择至少一家机场进行对比</div>';
+      return;
+    }
+
+    const html = `
+      <table class="w-full text-left text-xs sm:text-sm border-collapse">
+        <thead>
+          <tr class="bg-slate-50 border-b border-slate-200">
+            <th class="p-3.5 w-36 text-slate-500 font-medium">比较维度</th>
+            ${selected.map(a => `
+              <th class="p-3.5 min-w-[200px] border-l border-slate-100">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <span class="font-bold text-slate-900 text-base block">${a.name}</span>
+                    <span class="text-[11px] text-blue-600 font-normal">${a.lineType}</span>
+                  </div>
+                  ${selected.length > 1 ? `<button onclick="removeBrand('${a.id}')" class="text-slate-400 hover:text-red-500 text-xs px-1.5 py-0.5 rounded border border-slate-200">移除</button>` : ''}
+                </div>
+              </th>
+            `).join('')}
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100">
+          <tr>
+            <td class="p-3.5 font-semibold bg-slate-50/50 text-slate-700">起步价格</td>
+            ${selected.map(a => `<td class="p-3.5 border-l border-slate-100 font-bold text-red-600 text-base">¥${a.startingPrice} <span class="text-xs font-normal text-slate-400">/月起</span></td>`).join('')}
+          </tr>
+          <tr>
+            <td class="p-3.5 font-semibold bg-slate-50/50 text-slate-700">月可用流量</td>
+            ${selected.map(a => `<td class="p-3.5 border-l border-slate-100 font-bold text-slate-800">${a.traffic}</td>`).join('')}
+          </tr>
+          <tr>
+            <td class="p-3.5 font-semibold bg-slate-50/50 text-slate-700">单GB折算成本</td>
+            ${selected.map(a => `<td class="p-3.5 border-l border-slate-100 text-emerald-600 font-semibold">¥${a.plans[0] ? a.plans[0].perGbCost.toFixed(3) : '-'}/GB</td>`).join('')}
+          </tr>
+          <tr>
+            <td class="p-3.5 font-semibold bg-slate-50/50 text-slate-700">线路类型</td>
+            ${selected.map(a => `<td class="p-3.5 border-l border-slate-100 text-slate-800">${a.lineType}</td>`).join('')}
+          </tr>
+          <tr>
+            <td class="p-3.5 font-semibold bg-slate-50/50 text-slate-700">支持协议</td>
+            ${selected.map(a => `<td class="p-3.5 border-l border-slate-100 text-slate-700">${a.protocols.join(', ')}</td>`).join('')}
+          </tr>
+          <tr>
+            <td class="p-3.5 font-semibold bg-slate-50/50 text-slate-700">在线设备上限</td>
+            ${selected.map(a => `<td class="p-3.5 border-l border-slate-100 text-slate-700">${a.deviceLimit}</td>`).join('')}
+          </tr>
+          <tr>
+            <td class="p-3.5 font-semibold bg-slate-50/50 text-slate-700">AI支持能力</td>
+            ${selected.map(a => `<td class="p-3.5 border-l border-slate-100 text-slate-700">${a.aiSupport.join('、')}</td>`).join('')}
+          </tr>
+          <tr>
+            <td class="p-3.5 font-semibold bg-slate-50/50 text-slate-700">流媒体支持</td>
+            ${selected.map(a => `<td class="p-3.5 border-l border-slate-100 text-slate-700">${a.streamingSupport.join('、')}</td>`).join('')}
+          </tr>
+          <tr>
+            <td class="p-3.5 font-semibold bg-slate-50/50 text-slate-700">专属优惠码</td>
+            ${selected.map(a => `<td class="p-3.5 border-l border-slate-100">${a.coupon ? `<span class="bg-emerald-50 text-emerald-800 font-bold px-2 py-0.5 rounded text-xs">${a.coupon}</span>` : '<span class="text-slate-400">官方直销</span>'}</td>`).join('')}
+          </tr>
+          <tr>
+            <td class="p-3.5 font-semibold bg-slate-50/50 text-slate-700">购买与报告</td>
+            ${selected.map(a => `
+              <td class="p-3.5 border-l border-slate-100 space-y-2">
+                <a href="${a.affiliateUrl || a.officialUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn-brand-primary text-xs w-full block text-center py-1.5">直达官网</a>
+                <a href="/review/${a.slug}/" class="btn-brand-secondary text-xs w-full block text-center py-1.5">评测报告</a>
+              </td>
+            `).join('')}
+          </tr>
+        </tbody>
+      </table>
+    `;
+    container.innerHTML = html;
+  }
+
+  window.removeBrand = function(id) {
+    selectedIds = selectedIds.filter(x => x !== id);
+    renderTable();
+  };
+
+  const selectEl = document.getElementById('compare-select');
+  selectEl?.addEventListener('change', (e) => {
+    const val = e.target.value;
+    if (val && !selectedIds.includes(val)) {
+      if (selectedIds.length >= 4) {
+        alert('最多支持同时对比 4 家机场');
+        return;
+      }
+      selectedIds.push(val);
+      renderTable();
+    }
+    e.target.value = '';
+  });
+
+  renderTable();
+</script>
