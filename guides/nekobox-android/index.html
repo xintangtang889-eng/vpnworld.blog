@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NekoBox Android 手机客户端配置指南：Sing-box核心、多协议兼容 | VPNWorld</title>
+  <meta name="description" content="轻量化安卓代理神器 NekoBox for Android 实操教程。基于 Sing-box 核心，原生支持 Trojan、VLESS Reality、Hysteria 2 全系协议。">
+  <meta name="keywords" content="NekoBox教程, 安卓Sing-box客户端, VLESS Reality, Hysteria 2, 手机梯子">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vpnworld.blog/guides/nekobox-android/">
+  <link rel="stylesheet" href="../../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "NekoBox Android 客户端配置教程：轻量省电与多协议全兼容",
+    "description": "轻量化安卓代理神器 NekoBox for Android 实操教程。基于 Sing-box 核心，原生支持 Trojan、VLESS Reality、Hysteria 2 全系协议。",
+    "mainEntityOfPage": "https://vpnworld.blog/guides/nekobox-android/",
+    "datePublished": "2026-03-01",
+    "dateModified": "2026-03-01",
+    "author": { "@type": "Organization", "name": "VPNWorld 资深评测团队" },
+    "publisher": { "@type": "Organization", "name": "VPNWorld" }
+  }
+  </script>
+</head>
+<body data-root="../../">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../../index.html" class="site-logo"><span class="logo-badge">VPN</span>World</a>
+      <nav class="site-nav" id="site-nav">
+        <a href="../../index.html" class="nav-link">首页</a>
+        <a href="../../recommend/budget/index.html" class="nav-link">机场推荐</a>
+        <a href="../../ranking/overall/index.html" class="nav-link">机场排行</a>
+        <a href="../../review/yinxingren/index.html" class="nav-link">机场评测</a>
+        <a href="../../compare/index.html" class="nav-link">机场对比</a>
+        <a href="../../guides/index.html" class="nav-link active">使用教程</a>
+        <a href="../../blog/index.html" class="nav-link ">博客文章</a>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="search-trigger-btn"><span>搜索</span></button>
+        <button type="button" class="mobile-menu-btn">☰</button>
+      </div>
+    </div>
+  </header>
+  <main class="main-content">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="../../index.html">首页</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../index.html">使用教程</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">NekoBox Android 客户端配...</span>
+      </nav>
+      <div class="article-header">
+        <h1 class="hero-title" style="text-align: left; font-size: 2.2rem; margin-bottom: 0.5rem;">NekoBox Android 客户端配置教程：轻量省电与多协议全兼容</h1>
+        <div class="article-meta">
+          <span>作者：VPNWorld 资深评测团队</span>
+          <span>更新时间：2026-03-01</span>
+          <span>分类：Android 安卓</span>
+          <span>预计阅读：8 分钟</span>
+        </div>
+      </div>
+      <div class="article-content">
+        <div class="alert alert-tip" style="margin-bottom: 2rem;"><strong>核心导读：</strong>NekoBox for Android（简称松鼠/猫猫盒）是一款基于 Sing-box 核心构建的开源安卓客户端。它以界面干净、内存占用极低（仅约 30MB）、支持全协议直连而著称，深受低配置设备与注重电池续航用户的青睐。</div>
+
+        
+      <h2>一、多格式订阅解析能力</h2>
+      <p>无论是标准的 V2Ray 订阅、Clash 格式、还是最前沿的 Sing-box JSON 格式与通用 Base64 链接，NekoBox 均能自动识别并进行智能转换导入。</p>
+      
+    
+      <h2>二、路由规则与分流模式选择</h2>
+      <p>进入【路由设置】，推荐选择【绕过局域网及大陆地址（Bypass LAN & Mainland）】。内置的 GeoIP 与 GeoSite 数据库会自动识别国内主流 CDN 与域名，实现零配置智能分流。</p>
+      
+    
+
+        
+    <div class="card" style="margin: 2.5rem 0; padding: 1.5rem; background: var(--bg-card); border: 2px solid var(--primary-light); border-radius: 10px;">
+      <h3 style="margin-top: 0; display: flex; align-items: center; gap: 0.5rem; color: var(--primary-dark);">🎯 推荐高适配专线机场节点（已核验实测）</h3>
+      <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.25rem;">针对本场景，我们严选了以下具备高稳定性、独立流媒体解锁与抗封锁专线的服务商：</p>
+      <div class="grid grid-3" style="gap: 1rem;">
+        
+    <div style="background: var(--bg-alt); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <strong style="font-size: 1.1rem; color: var(--text-color);">飞V</strong>
+          <span style="font-size: 0.8rem; background: var(--primary-light); color: var(--primary); padding: 2px 6px; border-radius: 4px;">优化线路 / 罕见不限时套餐</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; line-height: 1.4;">以¥4.9极致超低起步价和罕见的不限时套餐为核心特色，试错成本接近于零，是极度低预算人群与轻度备...</p>
+        <div style="font-size: 1.1rem; font-weight: 700; color: #dc2626; margin-bottom: 0.5rem;">4.9元<span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">/月起 (100 GB/月)</span></div>
+        
+      </div>
+      <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+        <a href="https://varnexa.flyvaff.com/#/?code=Ks7qO8qe" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm" style="flex: 1; text-align: center;">直达官网 →</a>
+        <a href="../../review/feiv/index.html" class="btn btn-secondary btn-sm" style="flex: 1; text-align: center;">评测报告</a>
+      </div>
+    </div>
+  
+    <div style="background: var(--bg-alt); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <strong style="font-size: 1.1rem; color: var(--text-color);">无忧 (无忧链接)</strong>
+          <span style="font-size: 0.8rem; background: var(--primary-light); color: var(--primary); padding: 2px 6px; border-radius: 4px;">IPLC 专线</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; line-height: 1.4;">专为20元以内预算打造的高品质IPLC专线机场，轻中度日常办公学习首选，标配100GB纯专线高速...</p>
+        <div style="font-size: 1.1rem; font-weight: 700; color: #dc2626; margin-bottom: 0.5rem;">19元<span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">/月起 (100 GB/月)</span></div>
+        <div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 0.75rem;">优惠码：<code>wuyou666</code></div>
+      </div>
+      <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+        <a href="https://wep01.worryfreeaff.com/#/?code=oGi9FQ0J" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm" style="flex: 1; text-align: center;">直达官网 →</a>
+        <a href="../../review/wuyou/index.html" class="btn btn-secondary btn-sm" style="flex: 1; text-align: center;">评测报告</a>
+      </div>
+    </div>
+  
+    <div style="background: var(--bg-alt); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <strong style="font-size: 1.1rem; color: var(--text-color);">萤火虫（Firefly）</strong>
+          <span style="font-size: 0.8rem; background: var(--primary-light); color: var(--primary); padding: 2px 6px; border-radius: 4px;">优质线路 / 隧道中转</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; line-height: 1.4;">主打超低门槛优质线路，仅需8元/月起即可获得60GB可用流量，轻度上网、查阅资料与日常聊天交流的...</p>
+        <div style="font-size: 1.1rem; font-weight: 700; color: #dc2626; margin-bottom: 0.5rem;">8元<span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">/月起 (60 GB/月)</span></div>
+        <div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 0.75rem;">优惠码：<code>firefly</code></div>
+      </div>
+      <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+        <a href="https://vip02.fireflyaff.com/#/?code=uTKLkAyC" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm" style="flex: 1; text-align: center;">直达官网 →</a>
+        <a href="../../review/firefly/index.html" class="btn btn-secondary btn-sm" style="flex: 1; text-align: center;">评测报告</a>
+      </div>
+    </div>
+  
+      </div>
+    </div>
+  
+
+        <div style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <a href="../../guides/index.html" class="btn btn-secondary btn-sm">← 返回使用教程中心</a>
+          <a href="../../ranking/overall/index.html" class="btn btn-primary btn-sm">查看2026综合实力排行榜 →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 VPNWorld.blog · 专业中文机场与VPN节点评测中心</div>
+        <div><a href="../../sitemap.xml">Sitemap 网站地图</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../js/airports.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>
