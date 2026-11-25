@@ -3,13 +3,26 @@ import { AIRPORTS } from '../../data/airports';
 import AirportLayout from '../../layouts/AirportLayout.astro';
 
 export function getStaticPaths() {
-  return AIRPORTS.map(airport => ({
-    params: { slug: airport.slug },
-    props: { airport },
-  }));
+  return AIRPORTS.map((airport, index) => {
+    const prevAirport = index > 0 ? AIRPORTS[index - 1] : AIRPORTS[AIRPORTS.length - 1];
+    const nextAirport = index < AIRPORTS.length - 1 ? AIRPORTS[index + 1] : AIRPORTS[0];
+
+    return {
+      params: { slug: airport.slug },
+      props: {
+        airport,
+        prevAirport,
+        nextAirport,
+      },
+    };
+  });
 }
 
-const { airport } = Astro.props;
+const { airport, prevAirport, nextAirport } = Astro.props;
 ---
 
-<AirportLayout airport={airport} />
+<AirportLayout
+  airport={airport}
+  prevAirport={prevAirport}
+  nextAirport={nextAirport}
+/>

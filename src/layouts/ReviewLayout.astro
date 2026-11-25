@@ -5,9 +5,12 @@ import type { Airport } from '../data/airports';
 
 interface Props {
   airport: Airport;
+  prevAirport?: Airport;
+  nextAirport?: Airport;
+  relatedAirports?: Airport[];
 }
 
-const { airport } = Astro.props;
+const { airport, prevAirport, nextAirport, relatedAirports = [] } = Astro.props;
 
 const title = `${airport.name}如何？2026最新套餐价格/月付流量/节点线路与晚高峰测速实测报告 | VPNWorld`;
 const description = `【2026权威实测】${airport.name}到底如何、好不好用？本文深度评测${airport.name}最新套餐价格（${airport.startingPrice}元/月起）、月度可用流量（${airport.traffic}）、节点线路架构（${airport.lineType}）与晚高峰真连接测速表现，${airport.coupon ? '包含专属优惠码【' + airport.coupon + '】、' : ''}流媒体与ChatGPT解锁及避坑选购建议。`;
@@ -242,6 +245,120 @@ const reviewSchema = {
           </a>
         </div>
       </div>
+
+      <!-- Previous & Next Airport Review Navigation Bar -->
+      {(prevAirport || nextAirport) && (
+        <nav class="my-8 pt-6 border-t border-slate-200" aria-label="机场评测上下篇导航">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+              <span>浏览其他机场评测报告</span>
+            </span>
+            <span class="text-[11px] text-slate-400">点击切换下一家品牌实测</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {prevAirport && (
+              <a
+                href={`/review/${prevAirport.slug}/`}
+                class="group p-4 bg-slate-50 hover:bg-blue-50/70 border border-slate-200 hover:border-blue-300 rounded-xl transition-all duration-200 flex flex-col justify-between"
+              >
+                <div>
+                  <div class="flex items-center gap-1.5 text-xs font-semibold text-blue-600 mb-1.5">
+                    <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span>上一家评测</span>
+                    <span class="text-slate-400 font-normal">· {prevAirport.lineType}</span>
+                  </div>
+                  <div class="text-sm font-bold text-slate-800 group-hover:text-blue-600 line-clamp-1">
+                    {prevAirport.name}
+                  </div>
+                  <div class="text-xs text-slate-500 mt-1">
+                    起步价：<span class="text-red-600 font-bold">¥{prevAirport.startingPrice}/月</span> ({prevAirport.traffic})
+                  </div>
+                </div>
+                <div class="text-[11px] text-slate-400 group-hover:text-blue-500 mt-3 flex items-center gap-1">
+                  <span>← 查看该机场评测</span>
+                </div>
+              </a>
+            )}
+
+            {nextAirport && (
+              <a
+                href={`/review/${nextAirport.slug}/`}
+                class="group p-4 bg-slate-50 hover:bg-blue-50/70 border border-slate-200 hover:border-blue-300 rounded-xl transition-all duration-200 flex flex-col justify-between text-right"
+              >
+                <div>
+                  <div class="flex items-center justify-end gap-1.5 text-xs font-semibold text-blue-600 mb-1.5">
+                    <span class="text-slate-400 font-normal">{nextAirport.lineType} ·</span>
+                    <span>下一家评测</span>
+                    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </div>
+                  <div class="text-sm font-bold text-slate-800 group-hover:text-blue-600 line-clamp-1">
+                    {nextAirport.name}
+                  </div>
+                  <div class="text-xs text-slate-500 mt-1">
+                    起步价：<span class="text-red-600 font-bold">¥{nextAirport.startingPrice}/月</span> ({nextAirport.traffic})
+                  </div>
+                </div>
+                <div class="text-[11px] text-slate-400 group-hover:text-blue-500 mt-3 flex items-center justify-end gap-1">
+                  <span>查看该机场评测 →</span>
+                </div>
+              </a>
+            )}
+          </div>
+        </nav>
+      )}
+
+      <!-- Associated Client Guides & Comparison Link -->
+      <section class="my-8 pt-6 border-t border-slate-200">
+        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+          <div class="font-bold text-slate-900 text-sm mb-2 flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            <span>如何配置与使用 {airport.name}？</span>
+          </div>
+          <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+            购买该机场订阅后，可在对应操作系统安装主流开源代理客户端进行一键导入连接。推荐阅读以下配置教程：
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+            <a href="/guides/windows/" class="p-2 bg-white rounded border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition text-center font-medium">
+              💻 Windows 电脑教程
+            </a>
+            <a href="/guides/macos/" class="p-2 bg-white rounded border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition text-center font-medium">
+              🍏 macOS 电脑教程
+            </a>
+            <a href="/guides/shadowrocket-setup/" class="p-2 bg-white rounded border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition text-center font-medium">
+              🚀 iOS 小火箭设置
+            </a>
+            <a href="/guides/clash-meta-android/" class="p-2 bg-white rounded border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition text-center font-medium">
+              📱 Android 安卓配置
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Nav -->
+      <div class="pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+        <a href="/ranking/overall/" class="btn-brand-secondary text-xs">
+          ← 返回综合实力排行榜
+        </a>
+        <a href="/compare/" class="btn-brand-primary text-xs">
+          将 {airport.name} 加入横向对比 →
+        </a>
+      </div>
     </div>
   </div>
+
+  <!-- Floating Sticky Action Buttons -->
+  {nextAirport && (
+    <aside class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2.5 pointer-events-none" aria-label="快捷浮动控制">
+      <a
+        href={`/review/${nextAirport.slug}/`}
+        class="pointer-events-auto shadow-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3.5 py-2.5 rounded-full flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95"
+        title={`下一家：${nextAirport.name}`}
+      >
+        <span>下一家评测</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </a>
+    </aside>
+  )}
 </BaseLayout>

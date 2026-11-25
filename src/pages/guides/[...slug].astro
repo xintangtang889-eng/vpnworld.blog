@@ -4,16 +4,55 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
   const guides = await getCollection('guides');
-  return guides.map(entry => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+  guides.sort((a, b) => a.slug.localeCompare(b.slug));
+
+  return guides.map((entry, index) => {
+    const prevPost = index > 0 ? guides[index - 1] : guides[guides.length - 1];
+    const nextPost = index < guides.length - 1 ? guides[index + 1] : guides[0];
+
+    const currentPlatform = entry.data.platform;
+    let related = guides.filter(g => g.slug !== entry.slug && g.data.platform === currentPlatform);
+    if (related.length < 3) {
+      const others = guides.filter(g => g.slug !== entry.slug && g.data.platform !== currentPlatform);
+      related = [...related, ...others];
+    }
+    const relatedPosts = related.slice(0, 3).map(g => ({
+      title: g.data.h1,
+      description: g.data.description,
+      href: `/guides/${g.slug}/`,
+      category: g.data.platform || '实操教程',
+    }));
+
+    return {
+      params: { slug: entry.slug },
+      props: {
+        entry,
+        prevPost: {
+          title: prevPost.data.h1,
+          href: `/guides/${prevPost.slug}/`,
+          category: prevPost.data.platform || '实操教程',
+        },
+        nextPost: {
+          title: nextPost.data.h1,
+          href: `/guides/${nextPost.slug}/`,
+          category: nextPost.data.platform || '实操教程',
+        },
+        relatedPosts,
+      },
+    };
+  });
 }
 
-const { entry } = Astro.props;
+const { entry, prevPost, nextPost, relatedPosts } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<ArticleLayout frontmatter={entry.data} type="guides">
+<ArticleLayout
+  frontmatter={entry.data}
+  type="guides"
+  prevPost={prevPost}
+  nextPost={nextPost}
+  relatedPosts={relatedPosts}
+>
   <Content />
 </ArticleLayout>

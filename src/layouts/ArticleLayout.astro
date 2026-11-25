@@ -3,6 +3,19 @@ import BaseLayout from './BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import CtaBox from '../components/CtaBox.astro';
 
+interface NavPost {
+  title: string;
+  href: string;
+  category?: string;
+}
+
+interface RelatedPost {
+  title: string;
+  description?: string;
+  href: string;
+  category?: string;
+}
+
 interface Props {
   frontmatter: {
     title: string;
@@ -17,9 +30,12 @@ interface Props {
     recommendedBrands?: string[];
   };
   type?: 'blog' | 'guides';
+  prevPost?: NavPost | null;
+  nextPost?: NavPost | null;
+  relatedPosts?: RelatedPost[];
 }
 
-const { frontmatter, type = 'blog' } = Astro.props;
+const { frontmatter, type = 'blog', prevPost, nextPost, relatedPosts = [] } = Astro.props;
 
 const hubName = type === 'guides' ? '使用教程' : '博客文章';
 const hubHref = type === 'guides' ? '/guides/' : '/blog/';
@@ -55,13 +71,16 @@ const articleSchema = {
   ogType="article"
   schema={articleSchema}
 >
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600 z-50 w-0 transition-all duration-150"></div>
+
   <div class="container-custom py-6">
     <Breadcrumb items={breadcrumbItems} />
 
-    <article class="prose-custom bg-white p-6 sm:p-10 rounded-xl border border-slate-200 shadow-xs">
+    <article class="prose-custom bg-white p-6 sm:p-10 rounded-xl border border-slate-200 shadow-xs relative">
       <!-- Article Header -->
       <header class="border-b border-slate-100 pb-6 mb-6">
-        <div class="flex items-center gap-2 mb-3">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
           <span class="badge-brand">{tag}</span>
           <span class="text-xs text-slate-400">·</span>
           <span class="text-xs text-slate-500">更新时间：{frontmatter.date || '2026-03-01'}</span>
@@ -73,7 +92,7 @@ const articleSchema = {
           {frontmatter.h1}
         </h1>
 
-        <div class="text-xs text-slate-500 mt-3 flex items-center gap-2">
+        <div class="text-xs text-slate-500 mt-3 flex flex-wrap items-center gap-2">
           <span>撰稿：VPNWorld 资深技术测评组</span>
           <span>·</span>
           <span>已通过 2026 最新网络协议测试核验</span>
@@ -95,6 +114,146 @@ const articleSchema = {
       <!-- Commercial CTA Box -->
       <CtaBox brandIds={frontmatter.recommendedBrands} />
 
+      <!-- Previous & Next Article Navigation Bar -->
+      {(prevPost || nextPost) && (
+        <nav class="my-8 pt-6 border-t border-slate-200" aria-label="文章上下篇翻页导航">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+              <span>浏览下一篇 / 上一篇</span>
+            </span>
+            <span class="text-[11px] text-slate-400">点击卡片无缝切换阅读</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {prevPost ? (
+              <a
+                href={prevPost.href}
+                class="group p-4 bg-slate-50 hover:bg-blue-50/70 border border-slate-200 hover:border-blue-300 rounded-xl transition-all duration-200 flex flex-col justify-between"
+              >
+                <div>
+                  <div class="flex items-center gap-1.5 text-xs font-semibold text-blue-600 mb-1.5">
+                    <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span>上一篇</span>
+                    {prevPost.category && <span class="text-slate-400 font-normal">· {prevPost.category}</span>}
+                  </div>
+                  <div class="text-sm font-bold text-slate-800 group-hover:text-blue-600 line-clamp-2 leading-snug">
+                    {prevPost.title}
+                  </div>
+                </div>
+                <div class="text-[11px] text-slate-400 group-hover:text-blue-500 mt-3 flex items-center gap-1">
+                  <span>← 点击阅读</span>
+                </div>
+              </a>
+            ) : (
+              <div class="p-4 bg-slate-50/50 border border-slate-100 rounded-xl text-xs text-slate-400 flex items-center justify-center">
+                已是第一篇
+              </div>
+            )}
+
+            {nextPost ? (
+              <a
+                href={nextPost.href}
+                class="group p-4 bg-slate-50 hover:bg-blue-50/70 border border-slate-200 hover:border-blue-300 rounded-xl transition-all duration-200 flex flex-col justify-between text-right"
+              >
+                <div>
+                  <div class="flex items-center justify-end gap-1.5 text-xs font-semibold text-blue-600 mb-1.5">
+                    {nextPost.category && <span class="text-slate-400 font-normal">{nextPost.category} ·</span>}
+                    <span>下一篇</span>
+                    <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </div>
+                  <div class="text-sm font-bold text-slate-800 group-hover:text-blue-600 line-clamp-2 leading-snug">
+                    {nextPost.title}
+                  </div>
+                </div>
+                <div class="text-[11px] text-slate-400 group-hover:text-blue-500 mt-3 flex items-center justify-end gap-1">
+                  <span>点击继续阅读 →</span>
+                </div>
+              </a>
+            ) : (
+              <div class="p-4 bg-slate-50/50 border border-slate-100 rounded-xl text-xs text-slate-400 flex items-center justify-center">
+                已是最后一篇
+              </div>
+            )}
+          </div>
+        </nav>
+      )}
+
+      <!-- Related Articles Section -->
+      {relatedPosts && relatedPosts.length > 0 && (
+        <section class="my-8 pt-6 border-t border-slate-200">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2 m-0">
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+              <span>精选相关推荐阅读</span>
+            </h3>
+            <a href={hubHref} class="text-xs text-blue-600 hover:underline">
+              浏览全部{hubName} →
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {relatedPosts.map(rel => (
+              <a
+                href={rel.href}
+                class="card-custom p-4 flex flex-col justify-between hover:border-blue-300 transition-all group bg-slate-50/50 hover:bg-white"
+              >
+                <div>
+                  {rel.category && (
+                    <span class="text-[10px] bg-blue-50 text-blue-600 font-semibold px-1.5 py-0.5 rounded mb-2 inline-block">
+                      {rel.category}
+                    </span>
+                  )}
+                  <h4 class="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-blue-600 line-clamp-2 leading-snug mb-1.5">
+                    {rel.title}
+                  </h4>
+                  {rel.description && (
+                    <p class="text-[11px] text-slate-500 line-clamp-2 leading-relaxed m-0">
+                      {rel.description}
+                    </p>
+                  )}
+                </div>
+                <div class="text-[11px] font-semibold text-blue-600 mt-3 group-hover:underline flex items-center gap-1">
+                  <span>阅读文章</span>
+                  <span>→</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Sitewide Contextual Internal Linking Matrix -->
+      <section class="my-8 pt-6 border-t border-slate-200">
+        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+          <div class="font-bold text-slate-900 text-sm mb-3 flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"></path></svg>
+            <span>VPNWorld 全站核心选购与实操直达导航</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs">
+            <a href="/ranking/overall/" class="p-2.5 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition flex items-center gap-1.5 font-medium text-slate-700">
+              <span>🏆 2026综合实力排行榜</span>
+            </a>
+            <a href="/recommend/budget/" class="p-2.5 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition flex items-center gap-1.5 font-medium text-slate-700">
+              <span>💰 高性价比优质机场</span>
+            </a>
+            <a href="/recommend/streaming/" class="p-2.5 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition flex items-center gap-1.5 font-medium text-slate-700">
+              <span>🎬 奈飞与ChatGPT专线</span>
+            </a>
+            <a href="/compare/" class="p-2.5 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition flex items-center gap-1.5 font-medium text-slate-700">
+              <span>⚖️ 主流机场参数在线对比</span>
+            </a>
+            <a href="/guides/" class="p-2.5 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition flex items-center gap-1.5 font-medium text-slate-700">
+              <span>📱 全平台客户端安装教程</span>
+            </a>
+            <a href="/glossary/" class="p-2.5 bg-white rounded-lg border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition flex items-center gap-1.5 font-medium text-slate-700">
+              <span>📖 网络代理技术术语百科</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <!-- Footer Navigation inside Article -->
       <div class="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
         <a href={hubHref} class="btn-brand-secondary text-xs">
@@ -106,4 +265,56 @@ const articleSchema = {
       </div>
     </article>
   </div>
+
+  <!-- Floating Sticky Action Buttons (Desktop & Mobile) -->
+  <aside class="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2.5 pointer-events-none" aria-label="快捷浮动控制">
+    {nextPost && (
+      <a
+        href={nextPost.href}
+        class="pointer-events-auto shadow-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3.5 py-2.5 rounded-full flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95"
+        title={`下一篇：${nextPost.title}`}
+      >
+        <span>下一篇</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </a>
+    )}
+
+    <button
+      type="button"
+      id="back-to-top"
+      class="pointer-events-auto shadow-md bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 p-2.5 rounded-full transition-all hover:scale-105 active:scale-95 opacity-0 pointer-events-none"
+      aria-label="回到顶部"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+    </button>
+  </aside>
+
+  <!-- Script for Progress Bar & Back to Top -->
+  <script is:inline>
+    const progressBar = document.getElementById('reading-progress');
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+      if (progressBar) {
+        progressBar.style.width = scrolled + '%';
+      }
+
+      if (backToTopBtn) {
+        if (winScroll > 400) {
+          backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+        }
+      }
+    });
+
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  </script>
 </BaseLayout>

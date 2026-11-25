@@ -4,16 +4,55 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map(entry => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+  posts.sort((a, b) => a.slug.localeCompare(b.slug));
+
+  return posts.map((entry, index) => {
+    const prevPost = index > 0 ? posts[index - 1] : posts[posts.length - 1];
+    const nextPost = index < posts.length - 1 ? posts[index + 1] : posts[0];
+
+    const currentCategory = entry.data.category;
+    let related = posts.filter(p => p.slug !== entry.slug && p.data.category === currentCategory);
+    if (related.length < 3) {
+      const others = posts.filter(p => p.slug !== entry.slug && p.data.category !== currentCategory);
+      related = [...related, ...others];
+    }
+    const relatedPosts = related.slice(0, 3).map(p => ({
+      title: p.data.h1,
+      description: p.data.description,
+      href: `/blog/${p.slug}/`,
+      category: p.data.category || '深度评测',
+    }));
+
+    return {
+      params: { slug: entry.slug },
+      props: {
+        entry,
+        prevPost: {
+          title: prevPost.data.h1,
+          href: `/blog/${prevPost.slug}/`,
+          category: prevPost.data.category || '深度评测',
+        },
+        nextPost: {
+          title: nextPost.data.h1,
+          href: `/blog/${nextPost.slug}/`,
+          category: nextPost.data.category || '深度评测',
+        },
+        relatedPosts,
+      },
+    };
+  });
 }
 
-const { entry } = Astro.props;
+const { entry, prevPost, nextPost, relatedPosts } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<ArticleLayout frontmatter={entry.data} type="blog">
+<ArticleLayout
+  frontmatter={entry.data}
+  type="blog"
+  prevPost={prevPost}
+  nextPost={nextPost}
+  relatedPosts={relatedPosts}
+>
   <Content />
 </ArticleLayout>

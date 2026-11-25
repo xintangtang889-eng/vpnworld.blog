@@ -3,13 +3,31 @@ import { AIRPORTS } from '../../data/airports';
 import ReviewLayout from '../../layouts/ReviewLayout.astro';
 
 export function getStaticPaths() {
-  return AIRPORTS.map(airport => ({
-    params: { slug: airport.slug },
-    props: { airport },
-  }));
+  return AIRPORTS.map((airport, index) => {
+    const prevAirport = index > 0 ? AIRPORTS[index - 1] : AIRPORTS[AIRPORTS.length - 1];
+    const nextAirport = index < AIRPORTS.length - 1 ? AIRPORTS[index + 1] : AIRPORTS[0];
+
+    // Other 3 airports for comparison/related
+    const otherAirports = AIRPORTS.filter(a => a.slug !== airport.slug).slice(0, 3);
+
+    return {
+      params: { slug: airport.slug },
+      props: {
+        airport,
+        prevAirport,
+        nextAirport,
+        relatedAirports: otherAirports,
+      },
+    };
+  });
 }
 
-const { airport } = Astro.props;
+const { airport, prevAirport, nextAirport, relatedAirports } = Astro.props;
 ---
 
-<ReviewLayout airport={airport} />
+<ReviewLayout
+  airport={airport}
+  prevAirport={prevAirport}
+  nextAirport={nextAirport}
+  relatedAirports={relatedAirports}
+/>
