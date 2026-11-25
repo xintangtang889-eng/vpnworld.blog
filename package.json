@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/make-relative-and-sync-root.js",
     "preview": "astro preview",
     "test": "node scripts/audit-seo.js && node scripts/check-links.js && node scripts/validate-content.js",
     "audit": "node scripts/audit-seo.js",

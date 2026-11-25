@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /404.html
+Disallow: /scripts/
+Disallow: /docs/
+
+Sitemap: https://vpnworld.blog/sitemap.xml
+Sitemap: https://vpnworld.blog/sitemap-index.xml
