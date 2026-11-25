@@ -21,10 +21,12 @@ const DEFAULT_URLS = [
   "https://vpnworld.blog/ranking/overall/",
   "https://vpnworld.blog/ranking/value/",
   "https://vpnworld.blog/compare/",
-  "https://vpnworld.blog/review/tag-vpn/",
-  "https://vpnworld.blog/review/just-my-socks/",
-  "https://vpnworld.blog/review/flyingbird/",
-  "https://vpnworld.blog/review/flowercloud/",
+  "https://vpnworld.blog/review/yinxingren/",
+  "https://vpnworld.blog/review/breezenet/",
+  "https://vpnworld.blog/review/wavenet/",
+  "https://vpnworld.blog/review/flashleap/",
+  "https://vpnworld.blog/review/feimaoyun/",
+  "https://vpnworld.blog/review/feiv/",
   "https://vpnworld.blog/guides/windows/",
   "https://vpnworld.blog/blog/how-to-choose-airport/"
 ];

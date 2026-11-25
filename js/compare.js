@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!container || !checkboxesContainer) return;
 
   const airports = window.AIRPORTS_DATA || [];
-  let selectedSlugs = ["tag-vpn", "flyingbird", "just-my-socks"]; // Default 3 selected
+  let selectedSlugs = ["yinxingren", "breezenet", "feimaoyun"]; // Default 3 selected
 
   // Render Checkboxes
   function renderCheckboxes() {
@@ -79,15 +79,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // 1. Starting Price
     html += '<tr><td><strong>起步价格</strong></td>';
     currentAirports.forEach(function (a) {
-      html += '<td style="text-align: center;"><span style="font-size: 1.25rem; font-weight: 800; color: var(--color-dark);">' + a.currency + a.startingPrice + '</span> <span style="font-size: 0.8125rem; color: var(--color-muted);">/月折合</span></td>';
+      html += '<td style="text-align: center;"><span style="font-size: 1.25rem; font-weight: 800; color: var(--color-dark);">' + a.currency + a.startingPrice + '</span> <span style="font-size: 0.8125rem; color: var(--color-muted);">/月起</span></td>';
     });
     html += '</tr>';
 
     // 2. Base Plan Traffic
     html += '<tr><td><strong>起步套餐流量</strong></td>';
     currentAirports.forEach(function (a) {
-      const plan = a.plans[0];
-      html += '<td style="text-align: center;"><strong>' + (plan ? plan.traffic + ' GB' : '尚未核实') + '</strong></td>';
+      html += '<td style="text-align: center;"><strong>' + a.traffic + '</strong></td>';
     });
     html += '</tr>';
 
@@ -102,39 +101,46 @@ document.addEventListener("DOMContentLoaded", function () {
     // 4. Line & Protocol
     html += '<tr><td><strong>线路与协议</strong></td>';
     currentAirports.forEach(function (a) {
-      html += '<td>' + a.protocols.map(function(p){ return '<code>' + p + '</code>'; }).join(' ') + '</td>';
+      html += '<td><div style="font-weight:600; margin-bottom:0.25rem;">' + a.lineType + '</div>' + a.protocols.map(function(p){ return '<code>' + p + '</code>'; }).join(' ') + '</td>';
     });
     html += '</tr>';
 
-    // 5. Node Regions
+    // 5. Coupon
+    html += '<tr><td><strong>专属优惠券</strong></td>';
+    currentAirports.forEach(function (a) {
+      html += '<td style="text-align: center;">' + (a.coupon ? '<code style="color:#e11d48; font-weight:bold;">' + a.coupon + '</code>' : '无优惠码') + '</td>';
+    });
+    html += '</tr>';
+
+    // 6. Node Regions
     html += '<tr><td><strong>节点覆盖地区</strong></td>';
     currentAirports.forEach(function (a) {
       html += '<td><div style="font-size: 0.875rem;">' + a.regions.join("、") + '</div></td>';
     });
     html += '</tr>';
 
-    // 6. Device Limit
+    // 7. Device Limit
     html += '<tr><td><strong>设备同时在线数</strong></td>';
     currentAirports.forEach(function (a) {
       html += '<td style="text-align: center;">' + (a.deviceLimit || '尚未核实') + '</td>';
     });
     html += '</tr>';
 
-    // 7. AI Tool Support
+    // 8. AI Tool Support
     html += '<tr><td><strong>ChatGPT / AI支持</strong></td>';
     currentAirports.forEach(function (a) {
       html += '<td>' + (a.aiSupport && a.aiSupport.length ? a.aiSupport.join('、') : '仅部分节点') + '</td>';
     });
     html += '</tr>';
 
-    // 8. Streaming Support
+    // 9. Streaming Support
     html += '<tr><td><strong>4K流媒体解锁</strong></td>';
     currentAirports.forEach(function (a) {
       html += '<td>' + (a.streamingSupport && a.streamingSupport.length ? a.streamingSupport.join('、') : '基础解锁') + '</td>';
     });
     html += '</tr>';
 
-    // 9. Core Advantages
+    // 10. Core Advantages
     html += '<tr><td><strong>核心优势</strong></td>';
     currentAirports.forEach(function (a) {
       html += '<td><ul class="pros-list" style="margin-bottom:0;">' +
@@ -143,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     html += '</tr>';
 
-    // 10. Drawbacks / Cautions
+    // 11. Drawbacks / Cautions
     html += '<tr><td><strong>注意事项 / 缺点</strong></td>';
     currentAirports.forEach(function (a) {
       html += '<td><ul class="cons-list" style="margin-bottom:0;">' +
@@ -152,13 +158,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     html += '</tr>';
 
-    // 11. Links
-    html += '<tr><td><strong>详细评测与档案</strong></td>';
+    // 12. Links & Actions
+    html += '<tr><td><strong>操作与直达</strong></td>';
     currentAirports.forEach(function (a) {
       const reviewUrl = rootPrefix + 'review/' + a.slug + '/index.html';
       const airportUrl = rootPrefix + 'airport/' + a.slug + '/index.html';
       html += '<td style="text-align: center;">' +
-              '<a href="' + reviewUrl + '" class="btn btn-primary btn-sm" style="margin-bottom:0.4rem; display:block;">阅读深度评测</a>' +
+              '<a href="' + a.affiliateUrl + '" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm" style="margin-bottom:0.4rem; display:block;">👉 前往官网购买</a>' +
+              '<a href="' + reviewUrl + '" class="btn btn-secondary btn-sm" style="margin-bottom:0.4rem; display:block;">阅读深度评测</a>' +
               '<a href="' + airportUrl + '" class="btn btn-secondary btn-sm" style="display:block;">查看品牌档案</a>' +
               '</td>';
     });
