@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分流规则深度解析：直连、全局与规则模式如何选择？ | VPNWorld</title>
+  <meta name="description" content="知识百科：科学上网分流模式原理详解。直连（Direct）、全局（Global）与规则分流（Rule）有什么区别？如何配置最省流量且不影响国内应用。">
+  <meta name="keywords" content="分流规则解析, 直连模式, 全局代理, 规则分流, 节点分流">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vpnworld.blog/glossary/rule-clash/">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body data-root="../../">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../../index.html" class="site-logo"><span class="logo-badge">VPN</span>World</a>
+      <nav class="site-nav" id="site-nav">
+        <a href="../../index.html" class="nav-link">首页</a>
+        <a href="../../recommend/budget/index.html" class="nav-link">机场推荐</a>
+        <a href="../../ranking/overall/index.html" class="nav-link">机场排行</a>
+        <a href="../../review/tag-vpn/index.html" class="nav-link">机场评测</a>
+        <a href="../../compare/index.html" class="nav-link">机场对比</a>
+        <a href="../../guides/windows/index.html" class="nav-link">使用教程</a>
+        <a href="../../blog/how-to-choose-airport/index.html" class="nav-link">博客文章</a>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="search-trigger-btn"><span>搜索</span></button>
+        <button type="button" class="mobile-menu-btn">☰</button>
+      </div>
+    </div>
+  </header>
+  <main class="main-content">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="../../index.html">首页</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../iplc/index.html">知识百科</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">分流规则深度解析</span>
+      </nav>
+      <div class="article-header">
+        <h1 class="hero-title" style="text-align: left; font-size: 2.2rem; margin-bottom: 0.5rem;">分流规则深度解析与模式选择</h1>
+        <p class="section-desc">专业术语解析 · 如何科学合理配置分流策略，杜绝国内网站卡顿与流量浪费</p>
+      </div>
+      <div class="article-content">
+        <h2>三大工作模式的核心差异</h2>
+        <ul>
+          <li><strong>规则模式（Rule - 强烈推荐）：</strong>客户端根据内置的域名与IP规则列表进行智能路由判断。遇到百度、淘宝、微信走 <code>DIRECT（直连）</code>，遇到 Google、YouTube 走 <code>PROXY（代理）</code>。既节省机场昂贵流量，又保证国内业务秒开。</li>
+          <li><strong>全局模式（Global）：</strong>强制本机所有发出的网络请求全部经过境外节点。极易导致国内App（如网易云音乐、Bilibili、银行客户端）弹出异地登录报警或无法访问。</li>
+          <li><strong>直连模式（Direct）：</strong>完全不走代理，所有流量直出，相当于临时关闭翻墙。</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container"><div class="footer-bottom"><div>© 2026 VPNWorld.blog · 知识百科</div><div><a href="../../sitemap.xml">Sitemap</a></div></div></div></footer>
+  <script src="../../js/airports.js"></script><script src="../../js/main.js"></script>
+</body>
+</html>
