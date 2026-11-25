@@ -13,7 +13,7 @@ export function getStaticPaths() {
       keywords: '机场排行榜, 机场综合排名, 梯子排行, 最佳机场节点, 2026机场推荐',
       h1: '2026 年中文机场综合实力排行榜',
       intro: '基于客观真实测试数据，综合网络稳定性、晚高峰速率、价格透明度、设备兼容性与流媒体解锁能力评定。拒绝虚假跑分，公开透明。',
-      sortFn: (a: any, b: any) => (b.overallScore || 9.5) - (a.overallScore || 9.5),
+      sortFn: (a: any, b: any) => (a.rank || 0) - (b.rank || 0),
     },
     {
       type: 'value',

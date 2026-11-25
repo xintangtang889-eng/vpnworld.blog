@@ -9,11 +9,7 @@ const description = '2026专业中文机场推荐与VPN梯子评测网。汇集1
 const keywords = '机场推荐, 机场节点, 性价比机场, 梯子推荐, vpn, vpn机场, vpn节点, vpn推荐';
 
 // Featured top 3
-const featuredAirports = [
-  AIRPORTS.find(a => a.id === 'yinxingren')!,
-  AIRPORTS.find(a => a.id === 'breezenet')!,
-  AIRPORTS.find(a => a.id === 'feimaoyun')!,
-];
+const featuredAirports = AIRPORTS.slice(0, 3);
 
 // Latest 6 blog posts
 const allPosts = await getCollection('blog');
@@ -139,7 +135,7 @@ const featuredGuides = allGuides.slice(0, 4);
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-100">
-              {AIRPORTS.slice(0, 8).map((airport, index) => (
+              {AIRPORTS.map((airport, index) => (
                 <tr class="hover:bg-slate-50/60 transition">
                   <td class="p-3.5 text-center font-black">
                     <span class={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs ${
