@@ -2,35 +2,129 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 
-const title = '联系我们与纠错反馈 - VPNWorld 测评实验室 | VPNWorld';
-const description = '发现参数有误？需要申请评测或纠错？欢迎通过官方渠道联系 VPNWorld 测评团队。';
+const title = '联系我们与商务合作 - VPNWorld 测评实验室 | VPNWorld';
+const description = '欢迎通过官方渠道联系 VPNWorld 团队。提供 7x24h 商务推广合作、机场评测送测、参数数据纠错反馈与技术支持。';
 ---
 
 <BaseLayout title={title} description={description}>
-  <div class="container-custom py-6">
+  <div class="container-custom py-8 max-w-4xl">
     <Breadcrumb items={[{ name: '联系我们' }]} />
 
-    <article class="prose-custom bg-white p-6 sm:p-10 rounded-xl border border-slate-200 shadow-xs">
-      <header class="border-b border-slate-100 pb-4 mb-6">
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">联系与纠错反馈</h1>
-        <p class="text-xs text-slate-500 m-0">欢迎广大用户对评测数据提出勘误与建议</p>
+    <article class="prose-custom bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-xs">
+      <header class="border-b border-slate-100 pb-6 mb-8">
+        <div class="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>官方认证唯一联系渠道</span>
+        </div>
+        <h1 class="text-2xl sm:text-4xl font-black text-slate-900 leading-tight mb-3">
+          联系我们与商务合作
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-500 m-0 leading-relaxed">
+          致力于为翻墙用户提供真实、客观、无虚标的节点评测。欢迎各机场运营方洽谈商务合作、技术极客交流探讨及读者反馈纠错，我们将在 24 小时内回复。
+        </p>
       </header>
 
-      <div class="space-y-4 text-slate-700 text-sm leading-relaxed">
-        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2">数据勘误渠道</h2>
-        <p>
-          机场套餐资费与节点状态时常调整。如果您在浏览本站时发现任何价格变动、线路下线或优惠码失效，欢迎通过以下途径向我们反馈：
-        </p>
-        <ul class="list-disc pl-5 space-y-1">
-          <li><strong>GitHub 仓库 Issues：</strong>提交公开勘误 Issue，我们将在 24 小时内更新统一数据源并重新部署。</li>
-          <li><strong>电子邮件联系：</strong><code>feedback@vpnworld.blog</code></li>
-        </ul>
+      <!-- 2 Main Contact Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+        <!-- Telegram Card -->
+        <div class="bg-gradient-to-br from-sky-50 to-blue-50/50 p-6 rounded-2xl border border-sky-100 flex flex-col justify-between shadow-xs">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-sky-500 text-white flex items-center justify-center shadow-md">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.99 1.27-5.63 3.73-.53.37-1.02.55-1.45.54-.48-.01-1.4-.27-2.09-.49-.84-.27-1.51-.42-1.45-.89.03-.25.38-.51 1.07-.78 4.2-1.82 7-3.03 8.4-3.61 4-.1.67 1.83 1.13 2.5 1.34z"/></svg>
+              </div>
+              <span class="bg-sky-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">首选推荐</span>
+            </div>
 
-        <h2 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2 mt-6">商业合作与评测送测</h2>
-        <p>
-          本站接受优质服务商的客观评测申请。但请注意：我们坚守独立中立原则，任何付费推广均不会影响测试结论的真实性与客观评分。
-        </p>
+            <h3 class="text-base font-bold text-slate-900 mb-1">Telegram 官方直连</h3>
+            <div class="text-sm font-bold text-sky-700 font-mono mb-3">@xintangtang</div>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+              支持即时一对一沟通：机场收录与送测洽谈、商务推广合作、紧急线路勘误及读者技术咨询，7×24 小时高频在线。
+            </p>
+          </div>
+
+          <a
+            href="https://t.me/xintangtang"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="btn-brand-primary text-xs w-full text-center py-2.5 shadow-sm"
+          >
+            👉 前往 Telegram 发起私聊
+          </a>
+        </div>
+
+        <!-- Gmail Card -->
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col justify-between shadow-xs">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-red-500 text-white flex items-center justify-center shadow-md">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <span class="bg-slate-200 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded-full">官方信箱</span>
+            </div>
+
+            <h3 class="text-base font-bold text-slate-900 mb-1">官方电子邮箱</h3>
+            <div class="text-sm font-bold text-slate-800 font-mono mb-3 truncate">xintangtang888@gmail.com</div>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+              适用于正式商业公函往来、长篇深度评测材料送审、合作合同签署及数据授权事项。
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <a
+              href="mailto:xintangtang888@gmail.com"
+              class="btn-brand-secondary text-xs flex-1 text-center py-2.5"
+            >
+              发送邮件
+            </a>
+            <button
+              type="button"
+              id="copy-page-email"
+              class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-semibold px-4 py-2.5 rounded-lg transition"
+            >
+              <span id="copy-page-text">复制邮箱</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business Scope & Verification Principles -->
+      <div class="space-y-6 text-slate-700 text-xs sm:text-sm leading-relaxed border-t border-slate-100 pt-6">
+        <div>
+          <h2 class="text-lg font-bold text-slate-900 mb-2">合作与服务范围</h2>
+          <ul class="list-disc pl-5 space-y-1.5 text-slate-600">
+            <li><strong>机场节点送测与收录：</strong>提供测试节点账号与线路资料，测评组将进行为期 7 天的晚高峰压测与流媒体/AI 解锁验证后客观排期上线。</li>
+            <li><strong>全站数据纠错与勘误：</strong>若发现套餐价格变动、节点下线或优惠码过期，请随时告知，我们将在 24 小时内核验并同步刷新全站。</li>
+            <li><strong>广告与品牌专区合作：</strong>支持首页力荐位、文章推荐位与排行榜特色品牌专栏合作。</li>
+          </ul>
+        </div>
+
+        <div class="p-4 bg-blue-50/60 rounded-xl border border-blue-200 text-slate-700">
+          <strong class="text-blue-900 block font-bold mb-1">⚖️ 测评原则声明：</strong>
+          VPNWorld 坚守独立、客观的评测底线。所有收录品牌均需经过真实测速与协议核验，拒绝任何虚假跑分或误导消费者的虚标宣传。
+        </div>
       </div>
     </article>
   </div>
+
+  <script>
+    const copyBtn = document.getElementById('copy-page-email');
+    const copyText = document.getElementById('copy-page-text');
+    if (copyBtn && copyText) {
+      copyBtn.addEventListener('click', async () => {
+        const email = 'xintangtang888@gmail.com';
+        try {
+          await navigator.clipboard.writeText(email);
+          copyText.textContent = '已成功复制 ✓';
+          copyBtn.classList.add('text-emerald-600', 'border-emerald-300', 'bg-emerald-50');
+          setTimeout(() => {
+            copyText.textContent = '复制邮箱';
+            copyBtn.classList.remove('text-emerald-600', 'border-emerald-300', 'bg-emerald-50');
+          }, 2000);
+        } catch {
+          window.prompt('请手动复制 Gmail 邮箱：', email);
+        }
+      });
+    }
+  </script>
 </BaseLayout>
