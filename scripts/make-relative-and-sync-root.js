@@ -90,5 +90,14 @@ allDistFiles.forEach(distFilePath => {
   processedCount++;
 });
 
+// Ensure sitemap.xml exists as an alias for sitemap-index.xml for Bing & search engine compatibility
+const sitemapIndexDist = path.join(DIST_DIR, 'sitemap-index.xml');
+if (fs.existsSync(sitemapIndexDist)) {
+  const sitemapXmlDist = path.join(DIST_DIR, 'sitemap.xml');
+  const sitemapXmlRoot = path.join(ROOT_DIR, 'sitemap.xml');
+  fs.copyFileSync(sitemapIndexDist, sitemapXmlDist);
+  fs.copyFileSync(sitemapIndexDist, sitemapXmlRoot);
+}
+
 console.log(`[Dual-Compatibility] 已成功转换并同步 ${processedCount} 个 HTML 文件到根目录！`);
 console.log(`[Dual-Compatibility] 本地双击 index.html 与线上部署现已双向完美兼容！`);
