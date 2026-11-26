@@ -11,8 +11,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、为什么打开了浏览器代理，开发工具依然连不上？</h2>
-      <p>VS Code、Cursor 基于 Electron 架构开发，其内部的网络请求与后台 Node 进程默认不读取系统的 HTTP 代理设置。必须在客户端的设置中，显式配置 `http.proxy` 属性，或者通过开启 Tun 虚拟网卡进行全局网络层捕获。</p>
-      
-    
-      <h2>二、推荐的高稳定性开发者专线</h2>
-      <p>开发者进行代码提交与 API 交互对网络抖动（Jitter）极其敏感。推荐采用具备香港/新加坡极低延迟直连的专线机场（如 <a href='/review/yinxingren/'>隐形人</a> 或 <a href='/review/breezenet/'>微风网络</a>），实测 Copilot 提示延迟稳定在 100ms 以内。</p>
+<p>VS Code、Cursor 基于 Electron 架构开发，其内部的网络请求与后台 Node 进程默认不读取系统的 HTTP 代理设置。必须在客户端的设置中，显式配置 `http.proxy` 属性，或者通过开启 Tun 虚拟网卡进行全局网络层捕获。</p>
+
+<h2>二、推荐的高稳定性开发者专线</h2>
+<p>开发者进行代码提交与 API 交互对网络抖动（Jitter）极其敏感。推荐采用具备香港/新加坡极低延迟直连的专线机场（如 <a href='/review/yinxingren/'>隐形人</a> 或 <a href='/review/breezenet/'>微风网络</a>），实测 Copilot 提示延迟稳定在 100ms 以内。</p>

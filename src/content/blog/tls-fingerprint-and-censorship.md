@@ -11,8 +11,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、JA3 / JA4 指纹是如何出卖你的？</h2>
-      <p>Go 语言标准库或 Python 生成的 TLS 握手特征与官方正规 Google Chrome 浏览器的握手特征存在细微但固定的差异。防火长城可以不解密通信内容，仅仅根据握手特征的哈希值，就能以 99% 的准确率判定该连接来自自动化代理工具并实施丢包干扰。</p>
-      
-    
-      <h2>二、uTLS 的伪装艺术</h2>
-      <p>主流现代客户端（如 Clash Verge Rev 的 Mihomo 内核与 Xray）集成了 uTLS 库，能在底层完美模拟真实 Chrome 120+ 或 Safari 的完整扩展顺序与 GREASE 填充，使流量在审查系统的探针下与日常正规网页浏览完全无异。</p>
+<p>Go 语言标准库或 Python 生成的 TLS 握手特征与官方正规 Google Chrome 浏览器的握手特征存在细微但固定的差异。防火长城可以不解密通信内容，仅仅根据握手特征的哈希值，就能以 99% 的准确率判定该连接来自自动化代理工具并实施丢包干扰。</p>
+
+<h2>二、uTLS 的伪装艺术</h2>
+<p>主流现代客户端（如 Clash Verge Rev 的 Mihomo 内核与 Xray）集成了 uTLS 库，能在底层完美模拟真实 Chrome 120+ 或 Safari 的完整扩展顺序与 GREASE 填充，使流量在审查系统的探针下与日常正规网页浏览完全无异。</p>

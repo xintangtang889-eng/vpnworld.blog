@@ -11,8 +11,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、一秒检测是否存在 WebRTC 泄漏</h2>
-      <p>打开 `browserleaks.com/webrtc`。查看【Your IP Addresses】栏目：若在此处看到了您本地电信/联通/移动的真实国内 IP，说明您的浏览器正在无底线泄露您的物理真实位置！</p>
-      
-    
-      <h2>二、各大浏览器终极防护实操</h2>
-      <p>1. <strong>Chrome / Edge：</strong>在扩展商店安装官方推荐的【WebRTC Leak Prevent】或【uBlock Origin】，在设置中勾选‘Disable WebRTC non-proxied UDP’；<br>2. <strong>Firefox（火狐）：</strong>在地址栏输入 `about:config`，搜索 `media.peerconnection.enabled` 并将其双击切换为 `false`，彻底在底层禁用 WebRTC 功能。</p>
+<p>打开 `browserleaks.com/webrtc`。查看【Your IP Addresses】栏目：若在此处看到了您本地电信/联通/移动的真实国内 IP，说明您的浏览器正在无底线泄露您的物理真实位置！</p>
+
+<h2>二、各大浏览器终极防护实操</h2>
+<p>1. <strong>Chrome / Edge：</strong>在扩展商店安装官方推荐的【WebRTC Leak Prevent】或【uBlock Origin】，在设置中勾选‘Disable WebRTC non-proxied UDP’；<br>2. <strong>Firefox（火狐）：</strong>在地址栏输入 `about:config`，搜索 `media.peerconnection.enabled` 并将其双击切换为 `false`，彻底在底层禁用 WebRTC 功能。</p>

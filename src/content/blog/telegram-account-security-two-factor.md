@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、必须立刻开启的核心保命设置：两步验证（Two-Step Verification）</h2>
-      <p>进入 TG【Settings】->【Privacy and Security】->【Two-Step Verification】，设置一个独立的强密码和密保邮箱。开启后，即使黑客劫持了您的手机短信验证码，没有该本地密码也绝对无法登录您的账号！</p>
+<p>进入 TG【Settings】->【Privacy and Security】->【Two-Step Verification】，设置一个独立的强密码和密保邮箱。开启后，即使黑客劫持了您的手机短信验证码，没有该本地密码也绝对无法登录您的账号！</p>

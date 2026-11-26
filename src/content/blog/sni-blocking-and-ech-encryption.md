@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、ECH 是如何做到连目标域名都彻底加密的？</h2>
-      <p>ECH 将真正的 Client Hello 报文用目标网站在 DNS HTTPS 记录中公布的公钥进行深度加密，封装在一个看似无害的外层 Outer Client Hello 中。中间审查设备只能看到用户在连接一个泛用的公共 CDN，而完全无法得知其真实的子域名目标。</p>
+<p>ECH 将真正的 Client Hello 报文用目标网站在 DNS HTTPS 记录中公布的公钥进行深度加密，封装在一个看似无害的外层 Outer Client Hello 中。中间审查设备只能看到用户在连接一个泛用的公共 CDN，而完全无法得知其真实的子域名目标。</p>

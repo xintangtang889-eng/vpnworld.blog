@@ -12,8 +12,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、一分钟自测是否发生 DNS 泄漏</h2>
-      <p>打开专门的检测网站（如 `dnsleaktest.com`），点击【Extended Test】。如果在测试结果列表中赫然出现了‘China Telecom’、‘China Unicom’或国内本地 IP，说明您的代理配置存在严重的 DNS 泄露！</p>
-      
-    
-      <h2>二、开启 DoH（DNS-over-HTTPS）加密上游</h2>
-      <p>在客户端配置中，将海外 DNS 上游指定为加密的 Cloudflare（`https://1.1.1.1/dns-query`）或 Google DNS（`https://dns.google/dns-query`），使中间任何网络节点无法窥探您的解析请求。</p>
+<p>打开专门的检测网站（如 `dnsleaktest.com`），点击【Extended Test】。如果在测试结果列表中赫然出现了‘China Telecom’、‘China Unicom’或国内本地 IP，说明您的代理配置存在严重的 DNS 泄露！</p>
+
+<h2>二、开启 DoH（DNS-over-HTTPS）加密上游</h2>
+<p>在客户端配置中，将海外 DNS 上游指定为加密的 Cloudflare（`https://1.1.1.1/dns-query`）或 Google DNS（`https://dns.google/dns-query`），使中间任何网络节点无法窥探您的解析请求。</p>

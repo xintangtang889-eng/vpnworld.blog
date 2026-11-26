@@ -11,8 +11,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、NAT 类型对主机联机的致命影响</h2>
-      <p>NAT Type A/1 属于完全开放，能与所有玩家建立对等连接；NAT Type B/2 属于中等，可正常游玩；而 NAT Type C/D 只能与极少数 Type A 玩家连通，导致组队匹配失败率高达 80%。</p>
-      
-    
-      <h2>二、实测支持 Full-Cone 的电竞专线</h2>
-      <p>选择具备完全圆锥型 UDP 转发的电竞专线（如 <a href='/review/flashleap/'>闪跃</a>、<a href='/review/breezenet/'>微风网络</a>），在 OpenClash 中勾选【UDP 增强】，Switch 瞬间跳回 NAT Type A！</p>
+<p>NAT Type A/1 属于完全开放，能与所有玩家建立对等连接；NAT Type B/2 属于中等，可正常游玩；而 NAT Type C/D 只能与极少数 Type A 玩家连通，导致组队匹配失败率高达 80%。</p>
+
+<h2>二、实测支持 Full-Cone 的电竞专线</h2>
+<p>选择具备完全圆锥型 UDP 转发的电竞专线（如 <a href='/review/flashleap/'>闪跃</a>、<a href='/review/breezenet/'>微风网络</a>），在 OpenClash 中勾选【UDP 增强】，Switch 瞬间跳回 NAT Type A！</p>

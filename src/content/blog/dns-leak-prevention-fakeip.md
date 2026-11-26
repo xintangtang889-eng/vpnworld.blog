@@ -11,8 +11,8 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、在 `fake-ip-filter` 中加入局域网白名单</h2>
-      <p>进入配置文件，在 `dns:` 下的 `fake-ip-filter:` 列表中加入本地局域网后缀与特定域名：</p>
-      
+<p>进入配置文件，在 `dns:` 下的 `fake-ip-filter:` 列表中加入本地局域网后缀与特定域名：</p>
+
 ```bash
 dns:
   fake-ip-filter:

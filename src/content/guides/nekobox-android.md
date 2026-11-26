@@ -12,8 +12,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、多格式订阅解析能力</h2>
-      <p>无论是标准的 V2Ray 订阅、Clash 格式、还是最前沿的 Sing-box JSON 格式与通用 Base64 链接，NekoBox 均能自动识别并进行智能转换导入。</p>
-      
-    
-      <h2>二、路由规则与分流模式选择</h2>
-      <p>进入【路由设置】，推荐选择【绕过局域网及大陆地址（Bypass LAN & Mainland）】。内置的 GeoIP 与 GeoSite 数据库会自动识别国内主流 CDN 与域名，实现零配置智能分流。</p>
+<p>无论是标准的 V2Ray 订阅、Clash 格式、还是最前沿的 Sing-box JSON 格式与通用 Base64 链接，NekoBox 均能自动识别并进行智能转换导入。</p>
+
+<h2>二、路由规则与分流模式选择</h2>
+<p>进入【路由设置】，推荐选择【绕过局域网及大陆地址（Bypass LAN & Mainland）】。内置的 GeoIP 与 GeoSite 数据库会自动识别国内主流 CDN 与域名，实现零配置智能分流。</p>

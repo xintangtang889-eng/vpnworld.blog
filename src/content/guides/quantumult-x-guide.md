@@ -12,12 +12,11 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、圈X的核心界面与逻辑认知</h2>
-      <p>圈X主屏由三部分组成：顶部为各策略组的展开卡片，中部为流量统计与网络图表，底部大风车为开关与设置入口。圈X坚持以‘配置文件’驱动，所有分流、节点筛选与重写规则均条理清晰地记录在配置文件中。</p>
-      
-    
-      <h2>二、添加节点资源（Server Resource）</h2>
-      <p>undefined</p>
-      <ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;"><li style="margin-bottom: 0.5rem;">点击右下角大风车 -> 在【节点】栏目点击【节点资源】。</li><li style="margin-bottom: 0.5rem;">点击右上角【+】号，填入资源标签（如‘微风专线’），将机场提供的 Quantumult X 格式订阅链接粘贴至【资源路径】。</li><li style="margin-bottom: 0.5rem;">向左滑动该资源点击【更新】，即可瞬间加载上百个全球节点。</li></ol>
-    
-      <h2>三、分流规则集（Filter）与策略组搭建</h2>
-      <p>建议为媒体、国外常见站点、OpenAI 分别设置独立策略组。例如通过引用预置分流规则集，实现将 Netflix 流量固定分流至支持解锁的新加坡专线节点，而常规 Google/YouTube 则走延迟最低的香港中继线路。</p>
+<p>圈X主屏由三部分组成：顶部为各策略组的展开卡片，中部为流量统计与网络图表，底部大风车为开关与设置入口。圈X坚持以‘配置文件’驱动，所有分流、节点筛选与重写规则均条理清晰地记录在配置文件中。</p>
+
+<h2>二、添加节点资源（Server Resource）</h2>
+
+<ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;"><li style="margin-bottom: 0.5rem;">点击右下角大风车 -> 在【节点】栏目点击【节点资源】。</li><li style="margin-bottom: 0.5rem;">点击右上角【+】号，填入资源标签（如‘微风专线’），将机场提供的 Quantumult X 格式订阅链接粘贴至【资源路径】。</li><li style="margin-bottom: 0.5rem;">向左滑动该资源点击【更新】，即可瞬间加载上百个全球节点。</li></ol>
+
+<h2>三、分流规则集（Filter）与策略组搭建</h2>
+<p>建议为媒体、国外常见站点、OpenAI 分别设置独立策略组。例如通过引用预置分流规则集，实现将 Netflix 流量固定分流至支持解锁的新加坡专线节点，而常规 Google/YouTube 则走延迟最低的香港中继线路。</p>

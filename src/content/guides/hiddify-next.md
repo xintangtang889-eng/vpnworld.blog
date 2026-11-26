@@ -12,8 +12,8 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、极简操作三部曲</h2>
-      <p>undefined</p>
-      <ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;"><li style="margin-bottom: 0.5rem;">下载并安装对应系统的 Hiddify Next 客户端。</li><li style="margin-bottom: 0.5rem;">点击右上角【+】号，从剪贴板粘贴机场订阅链接，客户端会自动拉取节点并测速。</li><li style="margin-bottom: 0.5rem;">点击中央圆形的大连接按钮，客户端自动选取延迟最低的最佳节点并启动系统代理。</li></ol>
-    
-      <h2>二、区域模式与智能分流</h2>
-      <p>默认内置【智能分流（Smart Routing）】模式，自动放行微信、支付宝等国内应用，对于 YouTube、Netflix、Google 则自动走境外高速线路，完全无需用户折腾复杂的规则配置文件。</p>
+
+<ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;"><li style="margin-bottom: 0.5rem;">下载并安装对应系统的 Hiddify Next 客户端。</li><li style="margin-bottom: 0.5rem;">点击右上角【+】号，从剪贴板粘贴机场订阅链接，客户端会自动拉取节点并测速。</li><li style="margin-bottom: 0.5rem;">点击中央圆形的大连接按钮，客户端自动选取延迟最低的最佳节点并启动系统代理。</li></ol>
+
+<h2>二、区域模式与智能分流</h2>
+<p>默认内置【智能分流（Smart Routing）】模式，自动放行微信、支付宝等国内应用，对于 YouTube、Netflix、Google 则自动走境外高速线路，完全无需用户折腾复杂的规则配置文件。</p>

@@ -12,8 +12,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、编写极简 docker-compose.yml</h2>
-      <p>undefined</p>
-      
+
 ```bash
 version: '3'
 services:
@@ -28,6 +27,5 @@ services:
       - NET_ADMIN
 ```
 
-    
-      <h2>二、配置容器镜像拉取与环境变量分流</h2>
-      <p>利用上述容器提供的本地 7890 端口，可让 Docker Daemon 守护进程无缝拉取境外镜像，彻底解决国内服务器拉取 Docker Hub 频繁连接超时的问题。</p>
+<h2>二、配置容器镜像拉取与环境变量分流</h2>
+<p>利用上述容器提供的本地 7890 端口，可让 Docker Daemon 守护进程无缝拉取境外镜像，彻底解决国内服务器拉取 Docker Hub 频繁连接超时的问题。</p>

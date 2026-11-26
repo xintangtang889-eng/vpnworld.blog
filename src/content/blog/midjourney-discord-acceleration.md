@@ -11,8 +11,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、Discord 的网络痛点解析</h2>
-      <p>Discord 的文本通信、网关信令（Gateway）与语音媒体使用的是完全不同的子域名与端口。很多简陋的规则配置只代理了主域名，导致图片上传与 WebSocket 长连接走直连被墙阻断。</p>
-      
-    
-      <h2>二、为 Midjourney 定制规则集</h2>
-      <p>在客户端中将 `discord.com`、`discord.gg`、`discordapp.com`、`discordapp.net` 以及 `midjourney.com` 整体加入专用策略组，选择大带宽、低丢包的香港或日本 IEPL 专线，图片预览渲染即可达到秒开水平。</p>
+<p>Discord 的文本通信、网关信令（Gateway）与语音媒体使用的是完全不同的子域名与端口。很多简陋的规则配置只代理了主域名，导致图片上传与 WebSocket 长连接走直连被墙阻断。</p>
+
+<h2>二、为 Midjourney 定制规则集</h2>
+<p>在客户端中将 `discord.com`、`discord.gg`、`discordapp.com`、`discordapp.net` 以及 `midjourney.com` 整体加入专用策略组，选择大带宽、低丢包的香港或日本 IEPL 专线，图片预览渲染即可达到秒开水平。</p>

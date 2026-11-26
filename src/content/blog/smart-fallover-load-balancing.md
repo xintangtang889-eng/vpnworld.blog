@@ -11,8 +11,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、编写 `fallback` 自动故障转移策略组</h2>
-      <p>undefined</p>
-      
+
 ```bash
 proxy-groups:
   - name: "AUTO-FALLBACK"

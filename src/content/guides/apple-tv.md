@@ -12,8 +12,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、客户端下载与 iCloud 同步</h2>
-      <p>使用外区 Apple ID 登录 Apple TV 上的 App Store，下载 Stash 或 Surge。如果您的 iPhone 上已经购买并配置好了该软件，tvOS 端支持通过 iCloud 一键自动同步所有的订阅和节点配置，遥控器无需输入任何字符！</p>
-      
-    
-      <h2>二、节点选择与原生解锁验证</h2>
-      <p>在大屏幕上观看 Netflix、Disney+ 与 YouTube 4K 时，对节点的瞬时带宽与流媒体解锁能力要求极高。务必选择支持原生解锁的企业专线节点（如微风网络或隐形人），以避免频繁触发代理警告或降低至 1080P 画质。</p>
+<p>使用外区 Apple ID 登录 Apple TV 上的 App Store，下载 Stash 或 Surge。如果您的 iPhone 上已经购买并配置好了该软件，tvOS 端支持通过 iCloud 一键自动同步所有的订阅和节点配置，遥控器无需输入任何字符！</p>
+
+<h2>二、节点选择与原生解锁验证</h2>
+<p>在大屏幕上观看 Netflix、Disney+ 与 YouTube 4K 时，对节点的瞬时带宽与流媒体解锁能力要求极高。务必选择支持原生解锁的企业专线节点（如微风网络或隐形人），以避免频繁触发代理警告或降低至 1080P 画质。</p>

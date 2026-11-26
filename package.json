@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && node scripts/make-relative-and-sync-root.js",
+    "build": "node scripts/clean-markdown-content.js && astro build && node scripts/make-relative-and-sync-root.js",
     "preview": "astro preview",
-    "test": "node scripts/audit-seo.js && node scripts/check-links.js && node scripts/validate-content.js",
+    "test": "node scripts/audit-seo.js && node scripts/check-links.js && node scripts/validate-content.js && node scripts/verify-no-broken-code-blocks.js",
     "audit": "node scripts/audit-seo.js",
     "check-links": "node scripts/check-links.js",
     "validate": "node scripts/validate-content.js",

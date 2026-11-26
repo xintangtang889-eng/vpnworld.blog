@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、标准高质量 BGP 中转的全链路架构</h2>
-      <p>用户手机/电脑 -> <strong>[国内三网 BGP 核心机房（江苏/广东/上海）]</strong> -> <strong>[内网优化中继专线]</strong> -> <strong>[境外落地机房（香港/日本/新加坡）]</strong> -> 目标网站（Google/Netflix）。在这条链路中，国内 BGP 节点负责在省内毫秒级吸收用户流量，绕开拥挤的公网骨干路由。</p>
+<p>用户手机/电脑 -> <strong>[国内三网 BGP 核心机房（江苏/广东/上海）]</strong> -> <strong>[内网优化中继专线]</strong> -> <strong>[境外落地机房（香港/日本/新加坡）]</strong> -> 目标网站（Google/Netflix）。在这条链路中，国内 BGP 节点负责在省内毫秒级吸收用户流量，绕开拥挤的公网骨干路由。</p>

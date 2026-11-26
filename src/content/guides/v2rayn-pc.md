@@ -12,8 +12,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、下载安装与核心更新</h2>
-      <p>从 GitHub 官方 Releases 下载 `v2rayN-with-dependencies.zip`，解压即可运行。初次打开后，在顶部菜单【检查更新】中一键将 Xray-core 更新至最新发行版。</p>
-      
-    
-      <h2>二、订阅导入与真连接测速（Tcping / 真延迟）</h2>
-      <p>点击【订阅分组】->【订阅分组设置】->【添加】，填入机场订阅地址。点击【订阅】->【更新订阅】加载节点。按 `Ctrl+A` 全选节点，按 `Ctrl+R` 进行‘真连接延迟测速’（基于真实 HTTP 请求握手），延迟显示为绿色数字的即为可用节点。</p>
+<p>从 GitHub 官方 Releases 下载 `v2rayN-with-dependencies.zip`，解压即可运行。初次打开后，在顶部菜单【检查更新】中一键将 Xray-core 更新至最新发行版。</p>
+
+<h2>二、订阅导入与真连接测速（Tcping / 真延迟）</h2>
+<p>点击【订阅分组】->【订阅分组设置】->【添加】，填入机场订阅地址。点击【订阅】->【更新订阅】加载节点。按 `Ctrl+A` 全选节点，按 `Ctrl+R` 进行‘真连接延迟测速’（基于真实 HTTP 请求握手），延迟显示为绿色数字的即为可用节点。</p>

@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、Shopify 关键域名池梳理</h2>
-      <p>将 `shopify.com`、`shopifycdn.net`、`myshopify.com` 以及 `cdn.shopify.com` 加入直通高速香港专线的规则列表，不仅商品详情页秒级展开，主图上传吞吐量也能提升 3~5 倍。</p>
+<p>将 `shopify.com`、`shopifycdn.net`、`myshopify.com` 以及 `cdn.shopify.com` 加入直通高速香港专线的规则列表，不仅商品详情页秒级展开，主图上传吞吐量也能提升 3~5 倍。</p>

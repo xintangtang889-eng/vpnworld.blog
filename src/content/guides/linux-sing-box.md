@@ -12,12 +12,10 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、部署 Sing-box 二进制与 Systemd 服务</h2>
-      <p>直接从官方下载编译好的二进制文件放入 `/usr/local/bin/sing-box`，并配置 `/etc/systemd/system/sing-box.service` 实现开机自动后台拉起与异常崩溃自愈。</p>
-      
-    
-      <h2>二、设置终端临时与永久代理环境变量</h2>
-      <p>undefined</p>
-      
+<p>直接从官方下载编译好的二进制文件放入 `/usr/local/bin/sing-box`，并配置 `/etc/systemd/system/sing-box.service` 实现开机自动后台拉起与异常崩溃自愈。</p>
+
+<h2>二、设置终端临时与永久代理环境变量</h2>
+
 ```bash
 ## 终端快速注入代理
 export http_proxy="http://127.0.0.1:7890"

@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、解除报错核心四要素</h2>
-      <p>1. <strong>避免使用香港节点：</strong>Gemini 至今未在香港提供服务，必须连接美国、日本、新加坡、台湾或英国节点；<br>2. <strong>关闭浏览器的地理位置权限：</strong>防止 Chrome 泄露定位；<br>3. <strong>检查 Google 账号‘国家/地区’设置：</strong>若绑定了大陆手机且锁区，建议注册一个美区备用 Google 账号。</p>
+<p>1. <strong>避免使用香港节点：</strong>Gemini 至今未在香港提供服务，必须连接美国、日本、新加坡、台湾或英国节点；<br>2. <strong>关闭浏览器的地理位置权限：</strong>防止 Chrome 泄露定位；<br>3. <strong>检查 Google 账号‘国家/地区’设置：</strong>若绑定了大陆手机且锁区，建议注册一个美区备用 Google 账号。</p>

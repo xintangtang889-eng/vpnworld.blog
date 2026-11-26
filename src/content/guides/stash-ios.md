@@ -12,8 +12,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、直接载入标准 Clash 订阅</h2>
-      <p>无需任何格式转换工具，直接将机场后台的 Clash YAML 订阅链接粘贴至 Stash，即可无损解析出所有的 Proxies、Proxy Group 与 Rules 规则链条。</p>
-      
-    
-      <h2>二、On-Demand 按需连接省电神技</h2>
-      <p>开启 On-Demand（按需连接）后，iOS 系统仅在检测到有网络请求时自动激活代理隧道，在锁屏待机状态下完全断电休眠，彻底消除后台偷跑电量的顾虑。</p>
+<p>无需任何格式转换工具，直接将机场后台的 Clash YAML 订阅链接粘贴至 Stash，即可无损解析出所有的 Proxies、Proxy Group 与 Rules 规则链条。</p>
+
+<h2>二、On-Demand 按需连接省电神技</h2>
+<p>开启 On-Demand（按需连接）后，iOS 系统仅在检测到有网络请求时自动激活代理隧道，在锁屏待机状态下完全断电休眠，彻底消除后台偷跑电量的顾虑。</p>

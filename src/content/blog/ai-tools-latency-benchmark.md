@@ -11,8 +11,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、测试核心指标说明</h2>
-      <p>1. <strong>首字输出延迟（Time to First Token, TTFT）：</strong>用户发送问题到看到 AI 吐出第一个字的等待时间；<br>2. <strong>流式吞吐速率（Tokens/sec）：</strong>回答生成过程中每秒呈现的字符密度与连贯度。</p>
-      
-    
-      <h2>二、综合实测排行榜：日本与新加坡专线综合体验最佳</h2>
-      <p>实测表明：虽然美国节点由于距离 OpenAI/Anthropic 本地机房最近其后端处理延迟略低，但从中国大陆到美国的跨洋公网 RTT 抵消了优势；反而是日本东京与新加坡的优质专线（如 <a href='/review/yinxingren/'>隐形人</a>、<a href='/review/breezenet/'>微风网络</a>），实现了 450ms 以内极速的首字呈现，体验最为舒适。</p>
+<p>1. <strong>首字输出延迟（Time to First Token, TTFT）：</strong>用户发送问题到看到 AI 吐出第一个字的等待时间；<br>2. <strong>流式吞吐速率（Tokens/sec）：</strong>回答生成过程中每秒呈现的字符密度与连贯度。</p>
+
+<h2>二、综合实测排行榜：日本与新加坡专线综合体验最佳</h2>
+<p>实测表明：虽然美国节点由于距离 OpenAI/Anthropic 本地机房最近其后端处理延迟略低，但从中国大陆到美国的跨洋公网 RTT 抵消了优势；反而是日本东京与新加坡的优质专线（如 <a href='/review/yinxingren/'>隐形人</a>、<a href='/review/breezenet/'>微风网络</a>），实现了 450ms 以内极速的首字呈现，体验最为舒适。</p>

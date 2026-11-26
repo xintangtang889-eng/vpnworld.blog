@@ -12,5 +12,5 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、在 Telegram 内直接绑定本地 Socks5 端口</h2>
-      <p>undefined</p>
-      <ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;"><li style="margin-bottom: 0.5rem;">打开 Telegram【Settings】->【Data and Storage】->【Proxy Settings】。</li><li style="margin-bottom: 0.5rem;">点击【Add Proxy】，选择【SOCKS5】。</li><li style="margin-bottom: 0.5rem;">Server 填入 `127.0.0.1`，Port 填入代理客户端的本地监听端口（Clash 默认为 `7890`，v2rayN 默认为 `10808`），点击保存即可。</li></ol>
+
+<ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;"><li style="margin-bottom: 0.5rem;">打开 Telegram【Settings】->【Data and Storage】->【Proxy Settings】。</li><li style="margin-bottom: 0.5rem;">点击【Add Proxy】，选择【SOCKS5】。</li><li style="margin-bottom: 0.5rem;">Server 填入 `127.0.0.1`，Port 填入代理客户端的本地监听端口（Clash 默认为 `7890`，v2rayN 默认为 `10808`），点击保存即可。</li></ol>

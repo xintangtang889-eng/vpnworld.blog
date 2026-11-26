@@ -11,8 +11,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、跨国注册的两大关键问卷技巧</h2>
-      <p>在注册 BBC 账号填写邮编时，只需随手填入任意伦敦正规邮编（如 `SW1A 1AA` 或 `E1 6AN`）。当网页弹出‘Do you have a TV License?’（您是否持有英国电视收看许可证）时，直接点击‘Yes, I have a TV License’即可，平台不会进行实名二次审核。</p>
-      
-    
-      <h2>二、严苛的英国节点纯净度</h2>
-      <p>BBC iPlayer 对数据中心机房 IP 的屏蔽机制堪称全球最严苛之一。必须选择具备英国纯原生广播出口的专线节点（如 <a href='/review/yinxingren/'>隐形人</a>、<a href='/review/breezenet/'>微风网络</a> 英国节点），否则即使登录成功，点击播放也会弹出‘BBC iPlayer only works in the UK’的报错。</p>
+<p>在注册 BBC 账号填写邮编时，只需随手填入任意伦敦正规邮编（如 `SW1A 1AA` 或 `E1 6AN`）。当网页弹出‘Do you have a TV License?’（您是否持有英国电视收看许可证）时，直接点击‘Yes, I have a TV License’即可，平台不会进行实名二次审核。</p>
+
+<h2>二、严苛的英国节点纯净度</h2>
+<p>BBC iPlayer 对数据中心机房 IP 的屏蔽机制堪称全球最严苛之一。必须选择具备英国纯原生广播出口的专线节点（如 <a href='/review/yinxingren/'>隐形人</a>、<a href='/review/breezenet/'>微风网络</a> 英国节点），否则即使登录成功，点击播放也会弹出‘BBC iPlayer only works in the UK’的报错。</p>

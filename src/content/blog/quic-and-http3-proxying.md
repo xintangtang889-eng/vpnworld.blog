@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、连接迁移（Connection Migration）：跨网络无感漂移</h2>
-      <p>传统 TCP 依靠‘源 IP + 源端口 + 目的 IP + 目的端口’四元组绑定连接，一旦手机切换 Wi-Fi，本地 IP 改变导致 TCP 必须断开重连。而 QUIC 协议基于全局唯一的 64 位 Connection ID 进行路由标识，手机无论网络如何切换，底层代理连接都不会断开，实现真正的无感漫游。</p>
+<p>传统 TCP 依靠‘源 IP + 源端口 + 目的 IP + 目的端口’四元组绑定连接，一旦手机切换 Wi-Fi，本地 IP 改变导致 TCP 必须断开重连。而 QUIC 协议基于全局唯一的 64 位 Connection ID 进行路由标识，手机无论网络如何切换，底层代理连接都不会断开，实现真正的无感漫游。</p>

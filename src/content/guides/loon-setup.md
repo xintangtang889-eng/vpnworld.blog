@@ -12,8 +12,8 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、基础配置：快速导入节点</h2>
-      <p>undefined</p>
-      <ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;"><li style="margin-bottom: 0.5rem;">打开 Loon，点击下方【配置】->【节点订阅】。</li><li style="margin-bottom: 0.5rem;">点击右上角【+】，粘贴机场订阅链接并保存更新。</li><li style="margin-bottom: 0.5rem;">回到【仪表盘】，点击【策略组】，选择需要使用的节点。</li></ol>
-    
-      <h2>二、善用插件中心：一键实现流媒体分流与去广告</h2>
-      <p>Loon 内置了丰富的官方与社区插件。用户无需手动编写复杂的 MitM 和 Script 脚本，只需在【插件】界面搜索‘OpenAI’或‘Bilibili 换区’，点击安装即刻生效。</p>
+
+<ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;"><li style="margin-bottom: 0.5rem;">打开 Loon，点击下方【配置】->【节点订阅】。</li><li style="margin-bottom: 0.5rem;">点击右上角【+】，粘贴机场订阅链接并保存更新。</li><li style="margin-bottom: 0.5rem;">回到【仪表盘】，点击【策略组】，选择需要使用的节点。</li></ol>
+
+<h2>二、善用插件中心：一键实现流媒体分流与去广告</h2>
+<p>Loon 内置了丰富的官方与社区插件。用户无需手动编写复杂的 MitM 和 Script 脚本，只需在【插件】界面搜索‘OpenAI’或‘Bilibili 换区’，点击安装即刻生效。</p>

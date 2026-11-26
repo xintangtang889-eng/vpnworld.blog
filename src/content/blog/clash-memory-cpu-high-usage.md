@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、罪魁祸首一：日志级别未调成 Silent 或 Error</h2>
-      <p>很多用户误将日志等级开到了【Debug】或【Info】，导致高频的每一笔网络连接都在本地生成海量日志吃满内存。在设置中将【日志等级（Log Level）】调整为【Warning】或【Silent】，内存瞬间释放大半！</p>
+<p>很多用户误将日志等级开到了【Debug】或【Info】，导致高频的每一笔网络连接都在本地生成海量日志吃满内存。在设置中将【日志等级（Log Level）】调整为【Warning】或【Silent】，内存瞬间释放大半！</p>

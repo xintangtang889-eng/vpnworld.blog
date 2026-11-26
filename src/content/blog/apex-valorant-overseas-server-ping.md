@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、各主流亚服外服的物理时延天花板</h2>
-      <p>中国沿海地区通过顶级 IPLC 专线（如 <a href='/review/flashleap/'>闪跃</a> 或 <a href='/review/yinxingren/'>隐形人</a>）：<br>- <strong>香港服：</strong>延迟稳定在 15ms~30ms；<br>- <strong>台湾服：</strong>延迟稳定在 35ms~45ms；<br>- <strong>东京服：</strong>延迟稳定在 40ms~60ms；<br>- <strong>新加坡服：</strong>延迟稳定在 50ms~70ms，且全程 0 丢包！</p>
+<p>中国沿海地区通过顶级 IPLC 专线（如 <a href='/review/flashleap/'>闪跃</a> 或 <a href='/review/yinxingren/'>隐形人</a>）：<br>- <strong>香港服：</strong>延迟稳定在 15ms~30ms；<br>- <strong>台湾服：</strong>延迟稳定在 35ms~45ms；<br>- <strong>东京服：</strong>延迟稳定在 40ms~60ms；<br>- <strong>新加坡服：</strong>延迟稳定在 50ms~70ms，且全程 0 丢包！</p>

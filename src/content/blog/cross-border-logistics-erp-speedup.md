@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、物流 API 的网络吞吐保障</h2>
-      <p>在仓库路由上配置 OpenClash 或使用轻量客户端，将海外仓专属 API 接口精准定向至香港或日本直连专线（如 <a href='/review/breezenet/'>微风网络</a>），数千张面单批量同步瞬时完成。</p>
+<p>在仓库路由上配置 OpenClash 或使用轻量客户端，将海外仓专属 API 接口精准定向至香港或日本直连专线（如 <a href='/review/breezenet/'>微风网络</a>），数千张面单批量同步瞬时完成。</p>

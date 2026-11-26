@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、解除白屏与跨区领取技巧</h2>
-      <p>连接至美国或日本低延迟节点（如 <a href='/review/feiv/'>飞V</a>、<a href='/review/breezenet/'>微风网络</a>），在网页端打开 `store.epicgames.com` 即可直接将锁区大作领入游戏库，随后客户端国内直连下载游玩。</p>
+<p>连接至美国或日本低延迟节点（如 <a href='/review/feiv/'>飞V</a>、<a href='/review/breezenet/'>微风网络</a>），在网页端打开 `store.epicgames.com` 即可直接将锁区大作领入游戏库，随后客户端国内直连下载游玩。</p>

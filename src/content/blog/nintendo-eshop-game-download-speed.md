@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、电脑端代理一键共享至 Switch</h2>
-      <p>电脑打开 Clash Verge 的【允许局域网连接】，在 Switch 的网络高级设置中填入电脑的 IP 与 7890 端口，eShop 商店秒开，下载速度直接从几百 KB/s 飙升至数十 MB/s！</p>
+<p>电脑打开 Clash Verge 的【允许局域网连接】，在 Switch 的网络高级设置中填入电脑的 IP 与 7890 端口，eShop 商店秒开，下载速度直接从几百 KB/s 飙升至数十 MB/s！</p>

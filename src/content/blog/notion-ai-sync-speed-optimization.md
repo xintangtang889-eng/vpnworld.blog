@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、Notion 核心资产域名的精准捕获</h2>
-      <p>很多现成分流规则仅代理了 `notion.so`，却遗漏了庞大的媒体与云存储域名群：`notion.new`、`notion.site`、`notion-static.com` 以及存储附件图片的 AWS S3 节点。将这些域名整体纳入代理策略，即可杜绝大图与 PDF 附件加载失败的顽疾。</p>
+<p>很多现成分流规则仅代理了 `notion.so`，却遗漏了庞大的媒体与云存储域名群：`notion.new`、`notion.site`、`notion-static.com` 以及存储附件图片的 AWS S3 节点。将这些域名整体纳入代理策略，即可杜绝大图与 PDF 附件加载失败的顽疾。</p>

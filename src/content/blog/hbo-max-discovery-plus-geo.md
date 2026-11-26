@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、高规格影音对专线带宽与稳定性的严苛考验</h2>
-      <p>Max 的 4K HDR / 杜比视界码率通常高达 25Mbps~35Mbps。必须选用具备美国本地原生商宽或原生家庭宽带出口的专线（如 <a href='/review/yinxingren/'>隐形人</a>、<a href='/review/breezenet/'>微风网络</a>），才能确保整部电影播放过程中不出现任何降码率模糊。</p>
+<p>Max 的 4K HDR / 杜比视界码率通常高达 25Mbps~35Mbps。必须选用具备美国本地原生商宽或原生家庭宽带出口的专线（如 <a href='/review/yinxingren/'>隐形人</a>、<a href='/review/breezenet/'>微风网络</a>），才能确保整部电影播放过程中不出现任何降码率模糊。</p>

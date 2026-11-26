@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、东南亚冷门节点的覆盖要求</h2>
-      <p>挑选机场时，务必确认节点列表中是否涵盖菲律宾（PH）、马来西亚（MY）、泰国（TH）与越南（VN）的真实本土落地节点（如 <a href='/review/yinxingren/'>隐形人</a>、<a href='/review/breezenet/'>微风网络</a>），而非简单的香港广播节点。</p>
+<p>挑选机场时，务必确认节点列表中是否涵盖菲律宾（PH）、马来西亚（MY）、泰国（TH）与越南（VN）的真实本土落地节点（如 <a href='/review/yinxingren/'>隐形人</a>、<a href='/review/breezenet/'>微风网络</a>），而非简单的香港广播节点。</p>

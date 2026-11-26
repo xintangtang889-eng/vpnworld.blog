@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、为什么低延迟对于流式传输（Streaming）至关重要？</h2>
-      <p>大模型生成回答是按 Token 逐步吐出（Server-Sent Events）。若专线延迟高达 300ms 且伴随轻微丢包，输出就会出现明显的卡顿跳字；而连接延迟在 30ms 内的高品质专线节点，打字机效果瞬间迸发，使用体验宛如本地离线运行。</p>
+<p>大模型生成回答是按 Token 逐步吐出（Server-Sent Events）。若专线延迟高达 300ms 且伴随轻微丢包，输出就会出现明显的卡顿跳字；而连接延迟在 30ms 内的高品质专线节点，打字机效果瞬间迸发，使用体验宛如本地离线运行。</p>

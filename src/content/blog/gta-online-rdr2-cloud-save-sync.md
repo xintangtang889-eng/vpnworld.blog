@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、R 星服务的特定分流规则注入</h2>
-      <p>将 `rockstargames.com`、`socialclub.rockstargames.com` 以及负责云存档同步的 AWS 鉴权域名定向至延迟低于 50ms 的香港专线，启动器即可秒级登录，云存档实时秒存。</p>
+<p>将 `rockstargames.com`、`socialclub.rockstargames.com` 以及负责云存档同步的 AWS 鉴权域名定向至延迟低于 50ms 的香港专线，启动器即可秒级登录，云存档实时秒存。</p>

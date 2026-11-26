@@ -11,8 +11,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、配置 `huggingface-cli` 继承系统代理</h2>
-      <p>undefined</p>
-      
+
 ```bash
 ## 终端注入代理环境变量并开启多线程下载
 export HF_HUB_ENABLE_HF_TRANSFER=1

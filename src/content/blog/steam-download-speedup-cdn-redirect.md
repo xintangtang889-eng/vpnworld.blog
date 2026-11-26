@@ -11,8 +11,8 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、精准拆分：社区商店走代理，游戏内容下载走国内直连</h2>
-      <p>Steam 的好友列表、社区创意工坊与商店页面需要代理（走海外节点），而真正的游戏内容分发网络（CDN）在国内有完美合规的高速机房（由完美世界、网宿科技等承载）。在规则中加入以下规则：</p>
-      
+<p>Steam 的好友列表、社区创意工坊与商店页面需要代理（走海外节点），而真正的游戏内容分发网络（CDN）在国内有完美合规的高速机房（由完美世界、网宿科技等承载）。在规则中加入以下规则：</p>
+
 ```bash
 rules:
   - DOMAIN-SUFFIX,steampowered.com,PROXIES

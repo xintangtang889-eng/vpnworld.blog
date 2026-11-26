@@ -11,8 +11,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、验证码死循环的根本原因</h2>
-      <p>Perplexity 使用 Cloudflare Turnstile 保护其昂贵的搜索 API。当同一个节点 IP 在短时间内有上千名来自不同地点的用户高频发起并发查询时，Cloudflare 会将该 IP 的信誉评分降为最低级别，强行开启最严人机挑战。</p>
-      
-    
-      <h2>二、解决办法：切换至小众低复用商宽/住宅专线</h2>
-      <p>选择具备独立干净落地池的专线服务商（如 <a href='/review/flashleap/'>闪跃</a> 或 <a href='/review/yinxingren/'>隐形人</a>），即可彻底告别烦人的验证码，恢复秒搜体验。</p>
+<p>Perplexity 使用 Cloudflare Turnstile 保护其昂贵的搜索 API。当同一个节点 IP 在短时间内有上千名来自不同地点的用户高频发起并发查询时，Cloudflare 会将该 IP 的信誉评分降为最低级别，强行开启最严人机挑战。</p>
+
+<h2>二、解决办法：切换至小众低复用商宽/住宅专线</h2>
+<p>选择具备独立干净落地池的专线服务商（如 <a href='/review/flashleap/'>闪跃</a> 或 <a href='/review/yinxingren/'>隐形人</a>），即可彻底告别烦人的验证码，恢复秒搜体验。</p>

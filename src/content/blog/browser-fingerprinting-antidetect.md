@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、三大核心硬件级指纹剖析</h2>
-      <p>1. <strong>Canvas 指纹：</strong>利用 HTML5 Canvas 绘制隐藏图形，不同显卡驱动在亚像素渲染上的细微差异造就了唯一标识；<br>2. <strong>AudioContext 音频指纹：</strong>利用声卡音频处理管线计算声音频谱衰减特征；<br>3. <strong>字体枚举列表：</strong>检测系统已安装的中英文字体集合。</p>
+<p>1. <strong>Canvas 指纹：</strong>利用 HTML5 Canvas 绘制隐藏图形，不同显卡驱动在亚像素渲染上的细微差异造就了唯一标识；<br>2. <strong>AudioContext 音频指纹：</strong>利用声卡音频处理管线计算声音频谱衰减特征；<br>3. <strong>字体枚举列表：</strong>检测系统已安装的中英文字体集合。</p>

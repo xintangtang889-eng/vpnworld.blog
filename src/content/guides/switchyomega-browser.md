@@ -12,8 +12,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、从 SwitchyOmega 到 ZeroOmega</h2>
-      <p>由于 Google Chrome 全面推行 Manifest V3 扩展规范，老版 SwitchyOmega 已停止适配。社区推荐升级至完全兼容 V3 规范的 ZeroOmega，支持一键无损导入原有备份。</p>
-      
-    
-      <h2>二、配置 Auto Switch 自动切换情景模式</h2>
-      <p>利用 Auto Switch 模式配合 GFWList 规则列表，当访问 wikipedia.org、google.com 时自动调用本地 7890 端口代理，访问 baidu.com、bilibili.com 时自动直接连接，省心高效。</p>
+<p>由于 Google Chrome 全面推行 Manifest V3 扩展规范，老版 SwitchyOmega 已停止适配。社区推荐升级至完全兼容 V3 规范的 ZeroOmega，支持一键无损导入原有备份。</p>
+
+<h2>二、配置 Auto Switch 自动切换情景模式</h2>
+<p>利用 Auto Switch 模式配合 GFWList 规则列表，当访问 wikipedia.org、google.com 时自动调用本地 7890 端口代理，访问 baidu.com、bilibili.com 时自动直接连接，省心高效。</p>

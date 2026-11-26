@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、Crunchyroll 的网络需求</h2>
-      <p>平台对节点宽带的要求较为温和，但美区内容最为充沛。配合支持美国或欧洲解锁的高性价比机场（如 <a href='/review/feiv/'>飞V</a>、<a href='/review/feimaoyun/'>飞猫云</a>），即可在手机、电脑或电视端流畅追番。</p>
+<p>平台对节点宽带的要求较为温和，但美区内容最为充沛。配合支持美国或欧洲解锁的高性价比机场（如 <a href='/review/feiv/'>飞V</a>、<a href='/review/feimaoyun/'>飞猫云</a>），即可在手机、电脑或电视端流畅追番。</p>

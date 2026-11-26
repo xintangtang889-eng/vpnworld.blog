@@ -11,8 +11,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、管理员终端一键重置网络协议栈</h2>
-      <p>undefined</p>
-      
+
 ```bash
 ## 以管理员身份运行 PowerShell
 netsh winsock reset

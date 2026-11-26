@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、分流规则彻底解决 Agent 假死</h2>
-      <p>将 `battle.net`、`blizzard.com` 与 `bnetstream.net` 加入专线分流列表，战网通信通道即可秒级打通，更新不再卡顿。</p>
+<p>将 `battle.net`、`blizzard.com` 与 `bnetstream.net` 加入专线分流列表，战网通信通道即可秒级打通，更新不再卡顿。</p>

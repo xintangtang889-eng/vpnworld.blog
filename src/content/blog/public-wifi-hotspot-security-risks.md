@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、出差旅行铁律：连接公共 Wi-Fi 后第一时间拉起代理隧道</h2>
-      <p>只要手机或电脑开启了基于强加密协议的代理客户端（如 <a href='/review/yinxingren/'>隐形人</a>、<a href='/review/breezenet/'>微风网络</a>），整台设备流出的所有数据包在进入公共路由器前就已经被高强度加密成了密文流，即便热点本身由黑客恶意控制，其捕获到的也仅是无法破解的一串乱码。</p>
+<p>只要手机或电脑开启了基于强加密协议的代理客户端（如 <a href='/review/yinxingren/'>隐形人</a>、<a href='/review/breezenet/'>微风网络</a>），整台设备流出的所有数据包在进入公共路由器前就已经被高强度加密成了密文流，即便热点本身由黑客恶意控制，其捕获到的也仅是无法破解的一串乱码。</p>

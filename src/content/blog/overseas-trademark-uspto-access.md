@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、平稳高效检索方案</h2>
-      <p>通过配置规则将知识产权官方域名走低复用率的美国本土企业专线（如 <a href='/review/yinxingren/'>隐形人</a>），配合合理的查询间隔，即可保障全天候畅通无阻。</p>
+<p>通过配置规则将知识产权官方域名走低复用率的美国本土企业专线（如 <a href='/review/yinxingren/'>隐形人</a>），配合合理的查询间隔，即可保障全天候畅通无阻。</p>

@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、环境隔离三原则</h2>
-      <p>使用独立的指纹浏览器（如 AdsPower 或 Chrome 独立 Profile），全局路由仅走专属固定的美国住宅/原生 IP，绝不能在注册过程中发生节点断开或 IP 漂移。</p>
+<p>使用独立的指纹浏览器（如 AdsPower 或 Chrome 独立 Profile），全局路由仅走专属固定的美国住宅/原生 IP，绝不能在注册过程中发生节点断开或 IP 漂移。</p>

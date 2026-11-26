@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、必备的三大全球权威测试网站</h2>
-      <p>1. <strong>Scamalytics（`scamalytics.com`）：</strong>输入 IP 即可获得 0~100 的 Fraud Score 欺诈评分，低于 20 分为极高纯净度，超过 50 分代表高危机房；<br>2. <strong>IPinfo（`ipinfo.io`）：</strong>准确查看出口的 ASN 机构归属与 Type 属性（Hosting 为机房，ISP/Business 为住宅商宽）；<br>3. <strong>Whoer（`whoer.net`）：</strong>综合检测系统语言、DNS、时区与 WebRTC 的匹配伪装度百分比。</p>
+<p>1. <strong>Scamalytics（`scamalytics.com`）：</strong>输入 IP 即可获得 0~100 的 Fraud Score 欺诈评分，低于 20 分为极高纯净度，超过 50 分代表高危机房；<br>2. <strong>IPinfo（`ipinfo.io`）：</strong>准确查看出口的 ASN 机构归属与 Type 属性（Hosting 为机房，ISP/Business 为住宅商宽）；<br>3. <strong>Whoer（`whoer.net`）：</strong>综合检测系统语言、DNS、时区与 WebRTC 的匹配伪装度百分比。</p>

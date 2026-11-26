@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、手动固定 Discord 频道语音区域为 Hong Kong 或 Japan</h2>
-      <p>如果您是频道管理员，在频道设置的【语音区域覆盖】中，手动将其从‘自动’改为【Hong Kong（香港）】或【Singapore（新加坡）】，配合具备低丢包专线的机场，连麦延迟立刻压低至 30ms 且清澈见底。</p>
+<p>如果您是频道管理员，在频道设置的【语音区域覆盖】中，手动将其从‘自动’改为【Hong Kong（香港）】或【Singapore（新加坡）】，配合具备低丢包专线的机场，连麦延迟立刻压低至 30ms 且清澈见底。</p>

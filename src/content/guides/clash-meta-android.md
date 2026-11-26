@@ -12,9 +12,8 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、分应用代理（应用分流）避坑设置</h2>
-      <p>很多国内应用（如微信、美团、淘宝、手机网银）在检测到代理开启时可能出现卡顿或风控。CMFA 提供了强大的应用分流功能，进入【设置】->【网络】->【分应用代理】，您可以自由勾选仅允许 Chrome、YouTube、Telegram 等海外软件走代理，国内软件完全不经过代理内核。</p>
-      
-    
-      <h2>二、常驻后台保活技巧</h2>
-      <p>undefined</p>
-      <ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;"><li style="margin-bottom: 0.5rem;">在手机系统【设置】->【应用管理】中找到 Clash Meta，将‘电池优化’设置为‘无限制’。</li><li style="margin-bottom: 0.5rem;">在多任务卡片视图中，下拉 Clash Meta 应用卡片并点击【锁定】图标。</li><li style="margin-bottom: 0.5rem;">开启客户端内的【自动启动】与【常驻通知栏】选项，确保在息屏待机状态下后台推送不间断。</li></ol>
+<p>很多国内应用（如微信、美团、淘宝、手机网银）在检测到代理开启时可能出现卡顿或风控。CMFA 提供了强大的应用分流功能，进入【设置】->【网络】->【分应用代理】，您可以自由勾选仅允许 Chrome、YouTube、Telegram 等海外软件走代理，国内软件完全不经过代理内核。</p>
+
+<h2>二、常驻后台保活技巧</h2>
+
+<ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;"><li style="margin-bottom: 0.5rem;">在手机系统【设置】->【应用管理】中找到 Clash Meta，将‘电池优化’设置为‘无限制’。</li><li style="margin-bottom: 0.5rem;">在多任务卡片视图中，下拉 Clash Meta 应用卡片并点击【锁定】图标。</li><li style="margin-bottom: 0.5rem;">开启客户端内的【自动启动】与【常驻通知栏】选项，确保在息屏待机状态下后台推送不间断。</li></ol>

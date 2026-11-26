@@ -11,4 +11,4 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、Prime Video 的节点匹配准则</h2>
-      <p>亚马逊本身就是全球最大云计算巨头（AWS）的母公司，因此对其自身机房 IP 的识别极其敏锐。必须选用由独立家庭宽带/商宽承载的专用专线节点（如 <a href='/review/yinxingren/'>隐形人</a>、<a href='/review/breezenet/'>微风网络</a>），才能避开‘检测到代理服务’的警告阻拦。</p>
+<p>亚马逊本身就是全球最大云计算巨头（AWS）的母公司，因此对其自身机房 IP 的识别极其敏锐。必须选用由独立家庭宽带/商宽承载的专用专线节点（如 <a href='/review/yinxingren/'>隐形人</a>、<a href='/review/breezenet/'>微风网络</a>），才能避开‘检测到代理服务’的警告阻拦。</p>

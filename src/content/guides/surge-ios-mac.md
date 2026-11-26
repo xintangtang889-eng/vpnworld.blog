@@ -12,8 +12,7 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、为什么专业开发者与网络工程师偏爱 Surge？</h2>
-      <p>Surge 拥有毫秒级精准的诊断控制台、完整的 HTTP/HTTPS 请求与响应抓包审计面板、智能的链路备援机制。在跨国协同、海外 API 联调与全家网络调度场景下，Surge 提供了无可挑剔的鲁棒性。</p>
-      
-    
-      <h2>二、订阅托管与 Policy Group 策略组搭建</h2>
-      <p>通过 `[Proxy Group]` 指令，您可以构建具备自动测速（url-test）、负载均衡（load-balance）与故障转移（fallback）的超高可靠策略群。即使某个落地节点由于机房维护临时下线，Surge 也会在 50ms 内无感切换至备用专线。</p>
+<p>Surge 拥有毫秒级精准的诊断控制台、完整的 HTTP/HTTPS 请求与响应抓包审计面板、智能的链路备援机制。在跨国协同、海外 API 联调与全家网络调度场景下，Surge 提供了无可挑剔的鲁棒性。</p>
+
+<h2>二、订阅托管与 Policy Group 策略组搭建</h2>
+<p>通过 `[Proxy Group]` 指令，您可以构建具备自动测速（url-test）、负载均衡（load-balance）与故障转移（fallback）的超高可靠策略群。即使某个落地节点由于机房维护临时下线，Surge 也会在 50ms 内无感切换至备用专线。</p>

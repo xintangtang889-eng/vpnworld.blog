@@ -12,9 +12,8 @@ recommendedBrands: ["yinxingren", "breezenet", "feimaoyun"]
 ---
 
 <h2>一、主路由 vs 旁路由模式选型</h2>
-      <p>如果家里网络结构简单，推荐将 OpenWrt 设为唯一主路由（PPPoE 拨号）；如果已有硬路由（如华硕、小米路由器）提供 Wi-Fi，建议采用‘旁路由（网关模式）’，只需将需要翻墙的设备网关与 DNS 指向软路由 IP 即可，主网络稳定性不受任何干扰。</p>
-      
-    
-      <h2>二、OpenClash 核心配置与 Fake-IP 模式</h2>
-      <p>undefined</p>
-      <ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;"><li style="margin-bottom: 0.5rem;">在 OpenWrt 后台进入【服务】->【OpenClash】->【配置文件订阅】，添加机场订阅链接。</li><li style="margin-bottom: 0.5rem;">在【插件设置】中将运行模式切换为【Fake-IP（增强模式）】，内核选择【Meta 核心】。</li><li style="margin-bottom: 0.5rem;">开启【绕过中国大陆 IP】与【大陆白名单】，确保国内流量跑在千兆硬转发上不消耗软路由 CPU 性能。</li></ol>
+<p>如果家里网络结构简单，推荐将 OpenWrt 设为唯一主路由（PPPoE 拨号）；如果已有硬路由（如华硕、小米路由器）提供 Wi-Fi，建议采用‘旁路由（网关模式）’，只需将需要翻墙的设备网关与 DNS 指向软路由 IP 即可，主网络稳定性不受任何干扰。</p>
+
+<h2>二、OpenClash 核心配置与 Fake-IP 模式</h2>
+
+<ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;"><li style="margin-bottom: 0.5rem;">在 OpenWrt 后台进入【服务】->【OpenClash】->【配置文件订阅】，添加机场订阅链接。</li><li style="margin-bottom: 0.5rem;">在【插件设置】中将运行模式切换为【Fake-IP（增强模式）】，内核选择【Meta 核心】。</li><li style="margin-bottom: 0.5rem;">开启【绕过中国大陆 IP】与【大陆白名单】，确保国内流量跑在千兆硬转发上不消耗软路由 CPU 性能。</li></ol>
