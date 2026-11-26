@@ -63,10 +63,10 @@ const navItems = [
         <!-- Dropdown Modal Card -->
         <div
           id="contact-panel"
-          class="hidden absolute right-0 top-full mt-2.5 w-80 sm:w-88 bg-white border border-slate-200 rounded-2xl shadow-xl p-4 z-50 text-slate-800"
+          class="hidden absolute right-0 top-full mt-2 w-[340px] sm:w-[420px] max-w-[calc(100vw-20px)] bg-white border border-slate-200 rounded-2xl shadow-2xl p-4 sm:p-5 z-50 text-slate-800"
         >
           <!-- Header -->
-          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3.5">
             <div>
               <div class="font-bold text-slate-900 text-sm flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -85,25 +85,25 @@ const navItems = [
           </div>
 
           <!-- Channel 1: Telegram (Recommended) -->
-          <div class="bg-gradient-to-r from-sky-50 to-blue-50/70 p-3.5 rounded-xl border border-sky-100 mb-3">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-2.5">
-                <div class="w-8 h-8 rounded-lg bg-sky-500 text-white flex items-center justify-center shadow-xs">
-                  <svg class="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.99 1.27-5.63 3.73-.53.37-1.02.55-1.45.54-.48-.01-1.4-.27-2.09-.49-.84-.27-1.51-.42-1.45-.89.03-.25.38-.51 1.07-.78 4.2-1.82 7-3.03 8.4-3.61 4-.1.67 1.83 1.13 2.5 1.34z"/></svg>
+          <div class="bg-gradient-to-r from-sky-50 to-blue-50/70 p-3.5 sm:p-4 rounded-xl border border-sky-100 mb-3">
+            <div class="flex items-center justify-between gap-3 mb-2">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <div class="w-9 h-9 rounded-xl bg-sky-500 text-white flex items-center justify-center shadow-xs shrink-0">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.99 1.27-5.63 3.73-.53.37-1.02.55-1.45.54-.48-.01-1.4-.27-2.09-.49-.84-.27-1.51-.42-1.45-.89.03-.25.38-.51 1.07-.78 4.2-1.82 7-3.03 8.4-3.61 4-.1.67 1.83 1.13 2.5 1.34z"/></svg>
                 </div>
-                <div>
-                  <div class="text-xs font-bold text-slate-900 flex items-center gap-1">
-                    <span>Telegram 官方直通</span>
-                    <span class="bg-sky-500 text-white text-[9px] px-1 py-0.2 rounded font-semibold">首选推荐</span>
+                <div class="min-w-0">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-bold text-slate-900 whitespace-nowrap">Telegram 官方直通</span>
+                    <span class="bg-sky-500 text-white text-[9px] px-1.5 py-0.2 rounded font-semibold shrink-0 whitespace-nowrap">首选推荐</span>
                   </div>
-                  <div class="text-xs text-sky-700 font-bold font-mono">@xintangtang</div>
+                  <div class="text-xs text-sky-700 font-bold font-mono tracking-tight whitespace-nowrap mt-0.5">@xintangtang</div>
                 </div>
               </div>
               <a
                 href="https://t.me/xintangtang"
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                class="bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-all shadow-xs hover:scale-105 active:scale-95 flex items-center gap-1"
+                class="bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-all shadow-xs hover:scale-105 active:scale-95 shrink-0 whitespace-nowrap flex items-center gap-1"
               >
                 <span>直接私聊</span>
                 <span>→</span>
@@ -115,30 +115,30 @@ const navItems = [
           </div>
 
           <!-- Channel 2: Gmail -->
-          <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 mb-3">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center gap-2.5">
-                <div class="w-8 h-8 rounded-lg bg-red-500 text-white flex items-center justify-center shadow-xs">
-                  <svg class="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <div class="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200 mb-3">
+            <div class="flex items-center justify-between gap-3 mb-2">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <div class="w-9 h-9 rounded-xl bg-red-500 text-white flex items-center justify-center shadow-xs shrink-0">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 </div>
-                <div class="overflow-hidden">
-                  <div class="text-xs font-bold text-slate-900">官方电子邮箱</div>
-                  <div class="text-xs text-slate-700 font-semibold font-mono truncate" id="gmail-address-display">xintangtang888@gmail.com</div>
+                <div class="min-w-0">
+                  <div class="text-xs font-bold text-slate-900 whitespace-nowrap">官方电子邮箱</div>
+                  <div class="text-xs text-slate-700 font-bold font-mono tracking-tight truncate whitespace-nowrap mt-0.5" id="gmail-address-display">xintangtang888@gmail.com</div>
                 </div>
               </div>
               <button
                 type="button"
                 id="copy-email-btn"
-                class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-medium px-2.5 py-1.5 rounded-lg transition shadow-2xs shrink-0 flex items-center gap-1"
+                class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-semibold px-2.5 py-1.5 rounded-lg transition-all shadow-2xs shrink-0 whitespace-nowrap flex items-center gap-1"
                 title="一键复制 Gmail 邮箱"
               >
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                 <span id="copy-email-text">复制</span>
               </button>
             </div>
-            <div class="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-slate-200/60">
-              <span>适用于商业公函与详细送审材料</span>
-              <a href="mailto:xintangtang888@gmail.com" class="text-blue-600 hover:underline font-semibold flex items-center gap-0.5">
+            <div class="flex items-center justify-between text-[11px] text-slate-500 pt-1.5 border-t border-slate-200/60 gap-2">
+              <span class="truncate">适用于商业公函与详细送审材料</span>
+              <a href="mailto:xintangtang888@gmail.com" class="text-blue-600 hover:text-blue-700 font-semibold hover:underline shrink-0 whitespace-nowrap flex items-center gap-0.5">
                 <span>唤起邮箱发送</span>
                 <span>→</span>
               </a>
